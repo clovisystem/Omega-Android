@@ -1,0 +1,558 @@
+unit Unit2;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Edit,
+  FMX.Controls.Presentation, FMX.StdCtrls;
+
+type
+  TForm2 = class(TForm)
+    Label1: TLabel;
+    HeaderLabel: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    Label6: TLabel;
+    Edit5: TEdit;
+    Button1: TButton;
+    Button2: TButton;
+    Timer1: TTimer;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Timer2: TTimer;
+    Timer3: TTimer;
+    Timer4: TTimer;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure Edit4Change(Sender: TObject);
+    procedure Timer2Timer(Sender: TObject);
+    procedure Timer4Timer(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.fmx}
+
+uses HeaderFooterTemplate;
+
+procedure TForm2.Button1Click(Sender: TObject);
+begin
+      Form2:=nil;
+      hide;
+      Edit1.Text:='';
+      Edit2.Text:='';
+      Edit3.Text:='';
+      Edit4.Text:='';
+      Edit5.Text:='';
+
+end;
+
+procedure TForm2.Button2Click(Sender: TObject);
+begin
+    Edit1.text:='';
+    Edit2.text:='';
+    Edit3.text:='';
+    Edit4.text:='';
+    Edit5.text:='';
+end;
+
+procedure TForm2.Edit1Change(Sender: TObject);
+begin
+
+If (Edit1.Text='marrom') then
+begin
+Edit1.fontcolor:='Maroon';
+
+end;
+If (Edit1.Text='vermelho') then
+begin
+Edit1.fontcolor:='Red';
+end;
+If (Edit1.Text='laranja') then
+begin
+Edit1.fontcolor:='Orange';
+end;
+If (Edit1.Text='amarelo') then
+begin
+Edit1.fontcolor:='Yellow';
+end;
+If (Edit1.Text='verde') then
+begin
+Edit1.fontcolor:='Green';
+end;
+If (Edit1.Text='azul') then
+begin
+Edit1.fontcolor:='Blue';
+end;
+If (Edit1.Text='roxo')  then
+begin
+Edit1.fontcolor:='Purple';
+end;
+If (Edit1.Text='violeta')  then
+begin
+Edit1.fontcolor:='Purple';
+end;
+If (Edit1.Text='preto') then
+begin
+Edit1.fontcolor:='Black';
+end;
+If (Edit1.Text='cinza') then
+begin
+Edit1.fontcolor:='Gray';
+end;
+If (Edit1.Text='branco') then
+begin
+Edit1.fontcolor:='ScrollBar';
+end;
+end;
+
+
+
+
+procedure TForm2.Edit4Change(Sender: TObject);
+begin
+
+
+Timer1.Enabled:=true;
+
+If (Edit4.Text='marrom') then
+begin
+Edit4.fontcolor:='Maroon';
+end;
+If (Edit4.Text='vermelho') then
+begin
+Edit4.fontcolor:='Red';
+end;
+If (Edit4.Text='laranja') then
+begin
+Edit4.text:='Digite a cor certa.';
+label7.text:='';
+label8.text:='';
+label9.text:='';
+label10.text:='';
+
+
+Edit3.Text:='';
+Edit2.Text:='';
+Edit1.Text:='';
+Timer1.Enabled:=False;
+Timer2.Enabled:=False;
+
+end;
+If (Edit4.Text='amarelo') then
+begin
+Edit4.text:='Digite a cor certa.';
+label7.text:='';
+label8.text:='';
+label9.text:='';
+label10.text:='';
+
+
+Edit3.Text:='';
+Edit2.Text:='';
+Edit1.Text:='';
+Timer1.Enabled:=False;
+Timer2.Enabled:=False;
+end;
+If (Edit4.Text='verde') then
+begin
+Edit4.text:='Digite a cor certa.';
+label7.text:='';
+label8.text:='';
+label9.text:='';
+label10.text:='';
+
+
+Edit3.Text:='';
+Edit2.Text:='';
+Edit1.Text:='';
+Timer1.Enabled:=False;
+Timer2.Enabled:=False;
+end;
+If (Edit4.Text='azul') then
+begin
+Edit4.text:='Digite a cor certa.';
+label7.text:='';
+label8.text:='';
+label9.text:='';
+label10.text:='';
+
+
+Edit3.Text:='';
+Edit2.Text:='';
+Edit1.Text:='';
+Timer1.Enabled:=False;
+Timer2.Enabled:=False;
+end;
+If (Edit4.Text='roxo')  then
+begin
+Edit4.text:='Digite a cor certa.';
+label7.text:='';
+label8.text:='';
+label9.text:='';
+label10.text:='';
+
+
+Edit3.Text:='';
+Edit2.Text:='';
+Edit1.Text:='';
+Timer1.Enabled:=False;
+Timer2.Enabled:=False;
+end;
+If (Edit4.Text='violeta')  then
+begin
+Edit4.text:='Digite a cor certa.';
+label7.text:='';
+label8.text:='';
+label9.text:='';
+label10.text:='';
+
+
+Edit3.Text:='';
+Edit2.Text:='';
+Edit1.Text:='';
+Timer1.Enabled:=False;
+Timer2.Enabled:=False;
+end;
+If (Edit4.Text='preto') then
+begin
+Edit4.text:='Digite a cor certa.';
+label7.text:='';
+label8.text:='';
+label9.text:='';
+label10.text:='';
+
+
+Edit3.Text:='';
+Edit2.Text:='';
+Edit1.Text:='';
+Timer1.Enabled:=False;
+Timer2.Enabled:=False;
+end;
+If (Edit4.Text='cinza') then
+begin
+Edit4.text:='Digite a cor certa.';
+label7.text:='';
+label8.text:='';
+label9.text:='';
+label10.text:='';
+
+
+Edit3.Text:='';
+Edit2.Text:='';
+Edit1.Text:='';
+Timer1.Enabled:=False;
+Timer2.Enabled:=False;
+end;
+If (Edit4.Text='branco') then
+begin
+Edit4.text:='Digite a cor certa.';
+label7.text:='';
+label8.text:='';
+label9.text:='';
+label10.text:='';
+
+
+Edit3.Text:='';
+Edit2.Text:='';
+Edit1.Text:='';
+Timer1.Enabled:=False;
+Timer2.Enabled:=False;
+end;
+If (Edit4.Text='ouro') then
+begin
+Edit4.fontcolor:='Yellow';
+end;
+If (Edit4.Text='prata') then
+begin
+Edit4.fontcolor:='Silver';
+end;
+If (Edit4.Text='') then
+begin
+Timer1.Enabled:=true;
+end;
+
+end;
+
+procedure TForm2.FormShow(Sender: TObject);
+begin
+  label7.Visible:=false;
+  label8.Visible:=false;
+  label9.Visible:=false;
+  label10.Visible:=false;
+
+end;
+
+procedure TForm2.Timer1Timer(Sender: TObject);
+begin
+
+If (Edit1.Text='marrom') then
+begin
+label7.Visible:=true;
+
+label7.text:='1';
+label7.fontcolor:='Maroon';
+
+end
+Else If (Edit1.Text='vermelho') then
+begin
+label7.Visible:=true;
+
+label7.text:='2';
+label7.fontcolor:='Red';
+end
+Else If (Edit1.Text='laranja') then
+begin
+label7.Visible:=true;
+
+label7.text:='3';
+label7.fontcolor:='Orange';
+end
+Else If (Edit1.Text='amarelo') then
+begin
+label7.Visible:=true;
+label7.text:='4';
+label7.fontcolor:='Yellow';
+end
+Else If (Edit1.Text='verde') then
+begin
+label7.Visible:=true;
+label7.text:='5';
+label7.fontcolor:='Green';
+end
+Else If (Edit1.Text='azul') then
+begin
+label7.Visible:=true;
+label7.text:='6';
+label7.fontcolor:='Blue';
+end
+Else If (Edit1.Text='roxo' ) Or (Edit1.Text='violeta' ) then
+begin
+label7.Visible:=true;
+label7.text:='7';
+label7.fontcolor:='Purple';
+end
+Else If (Edit1.Text='cinza') then
+begin
+label7.Visible:=true;
+label7.text:='8';
+label7.fontcolor:='Gray';
+end
+Else If (Edit1.Text='branco') then
+begin
+label7.Visible:=true;
+label7.text:='9';
+label7.fontcolor:='ScrollBar';
+end
+Else If (Edit1.Text='preto') then
+begin
+label7.Visible:=true;
+label7.text:=' ';
+label7.fontcolor:='ScrollBar';
+
+timer1.Enabled:=false;
+
+ end;
+
+
+If (Edit2.Text='marrom') then
+begin
+label8.Visible:=true;
+label8.text:='1';
+label8.fontcolor:='Maroon';
+end
+Else If (Edit2.Text='vermelho') then
+begin
+label8.Visible:=true;
+label8.text:='2';
+label8.fontcolor:='Red';
+end
+Else If (Edit2.Text='laranja') then
+begin
+label8.Visible:=true;
+label8.text:='3';
+label8.fontcolor:='Olive';
+end
+Else If (Edit2.Text='amarelo') then
+begin
+label8.Visible:=true;
+label8:='4';
+label8.fontcolor:='Yellow';
+end
+Else If (Edit2.Text='verde') then
+begin
+label8.Visible:=true;
+label8.text:='5';
+label8.fontcolor:='Green';
+end
+Else If (Edit2.Text='azul') then
+begin
+label8.Visible:=true;
+label8.text:='6';
+label8.fontcolor:='Blue';
+end
+Else If (Edit2.Text='roxo') Or (Edit3.Text='violeta') then
+begin
+label8.Visible:=true;
+label8.text:='7';
+label8.fontcolor:='Purple';
+end
+Else If (Edit2.Text='cinza') then
+begin
+label8.Visible:=true;
+label8.text:='8';
+label8.fontcolor:='Gray';
+end
+Else If (Edit2.Text='branco') then
+begin
+label8.Visible:=true;
+label8.text:='9';
+label8.fontcolor:='ScrollBar';
+end
+Else If (Edit2.Text='preto') then
+begin
+label8.Visible:=true;
+label8.text:=' ';
+label8.fontcolor:='Black';
+end;
+
+
+
+
+timer2.Enabled:=true;
+
+
+If (Edit3.Text='marrom') then
+begin
+label9.Visible:=true;
+label9.text:='0';
+label9.fontcolor:='Maroon';
+end
+Else If (Edit3.Text='vermelho') then
+begin
+label9.Visible:=true;
+label9.text:='00';
+label9.fontcolor:='Red';
+end
+Else If (Edit3.Text='laranja') then
+begin
+label9.Visible:=true;
+label9.text:='000';
+label9.fontcolor:='Orange';
+end
+Else If (Edit3.Text='amarelo') then
+begin
+label9.Visible:=true;
+label9.text:='0000';
+label9.fontcolor:='Yellow';
+end
+Else If (Edit3.Text='verde') then
+begin
+label9.Visible:=true;
+label9.text:='00000';
+label9.fontcolor:='Green';
+end
+Else If (Edit3.Text='azul') then
+begin
+label9.Visible:=true;
+label9.text:='000000';
+label9.fontcolor:='Blue';
+end
+Else If (Edit3.Text='roxo') Or (Edit3.Text='violeta') then
+begin
+label9.Visible:=true;
+label9.text:='0000000';
+label9.fontcolor:='Purple';
+end
+Else If (Edit3.Text='cinza') then
+begin
+label9.Visible:=true;
+label9.text:='00000000';
+label9.fontcolor:='Gray';
+end
+Else If (Edit3.Text='branco') then
+begin
+label9.Visible:=true;
+label9.text:='000000000';
+label9.fontcolor:='ScrollBar';
+end
+Else If (Edit3.Text='preto') then
+begin
+label9.Visible:=true;
+label9.text:=' ';
+label9.fontcolor:='Black';
+end;
+
+
+
+
+
+If (Edit4.Text='marrom') then
+begin
+label10.Visible:=true;
+label10.text:='1%';
+label10.fontcolor:='Maroon';
+end
+Else If (Edit4.Text='vermelho') then
+begin
+label10.Visible:=true;
+label10.text:='2%';
+label10.fontcolor:='Red';
+end
+Else If (Edit4.Text='ouro') then
+begin
+label10.Visible:=true;
+label10.text:='5%';
+label10.fontcolor:='Yellow';
+end
+Else If (Edit4.Text='prata') then
+begin
+label10.Visible:=true;
+label10.text:='10%';
+label10.fontcolor:='Silver';
+end
+Else If (Edit4.Text=' ') then
+begin
+label10.Visible:=true;
+label10.text:='20%';
+label10.fontcolor:='ScrollBar';
+end
+
+
+
+
+
+end;
+
+
+procedure TForm2.Timer2Timer(Sender: TObject);
+begin
+  Timer4.enabled:=true;
+end;
+
+procedure TForm2.Timer4Timer(Sender: TObject);
+begin
+  edit5.text:=label7.text+label8.text+label9.text+'Ohms'+'    '+label10.text+'tol';
+
+end;
+
+end.

@@ -1,0 +1,301 @@
+object Form3: TForm3
+  Left = 0
+  Top = 0
+  Caption = 'Form3'
+  ClientHeight = 562
+  ClientWidth = 372
+  Fill.Color = xFF0D107A
+  Fill.Kind = Solid
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object Label1: TLabel
+    Align = Scale
+    StyledSettings = [Family, Size, Style]
+    Position.X = 107.000000000000000000
+    Position.Y = 80.000000000000000000
+    Size.Width = 286.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.FontColor = claWhite
+    Text = 'Digite a cor de cada faixa a seguir:'
+  end
+  object HeaderLabel: TLabel
+    Align = Top
+    StyledSettings = [Family]
+    Size.Width = 372.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'toollabel'
+    TextSettings.Font.Size = 30.000000000000000000
+    TextSettings.Font.Style = [fsBold]
+    TextSettings.FontColor = claSkyblue
+    TextSettings.HorzAlign = Center
+    Text = #937'mega'
+  end
+  object Label2: TLabel
+    Align = Scale
+    StyledSettings = [Family, Size, Style]
+    Position.X = 29.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 108.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.FontColor = claWhite
+    Text = '1'#176' Faixa'
+  end
+  object Edit1: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Align = Scale
+    StyleLookup = 'editstyle'
+    TabOrder = 0
+    KeyboardType = Alphabet
+    TextSettings.FontColor = claMediumblue
+    Position.X = 116.000000000000000000
+    Position.Y = 120.000000000000000000
+    Size.Width = 181.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    TextPrompt = 'Ex.:amarelo'
+    StyledSettings = [Family, Size, Style, FontColor, Other]
+    OnKeyUp = Edit1KeyUp
+    OnExit = Edit1Exit
+  end
+  object Edit2: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Align = Scale
+    TabOrder = 1
+    KeyboardType = Alphabet
+    TextSettings.FontColor = claMediumblue
+    Position.X = 116.000000000000000000
+    Position.Y = 168.000000000000000000
+    Size.Width = 181.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Family, Size, Style, FontColor, Other]
+    OnKeyUp = Edit2KeyUp
+    OnExit = Edit2Exit
+  end
+  object Label3: TLabel
+    Align = Scale
+    StyledSettings = [Family, Size, Style]
+    Position.X = 29.000000000000000000
+    Position.Y = 176.000000000000000000
+    Size.Width = 108.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.FontColor = claWhite
+    Text = '2'#176' Faixa'
+  end
+  object Label4: TLabel
+    Align = Scale
+    StyledSettings = [Family, Size, Style]
+    Position.X = 29.000000000000000000
+    Position.Y = 224.000000000000000000
+    Size.Width = 108.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.FontColor = claWhite
+    Text = '3'#176' Faixa'
+  end
+  object Edit3: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Align = Scale
+    TabOrder = 2
+    KeyboardType = Alphabet
+    TextSettings.FontColor = claMediumblue
+    Position.X = 116.000000000000000000
+    Position.Y = 216.000000000000000000
+    Size.Width = 181.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Family, Size, Style, FontColor, Other]
+    OnKeyUp = Edit3KeyUp
+    OnExit = Edit3Exit
+  end
+  object Edit4: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Align = Scale
+    TabOrder = 3
+    KeyboardType = Alphabet
+    TextSettings.FontColor = claMediumblue
+    Position.X = 116.000000000000000000
+    Position.Y = 264.000000000000000000
+    Size.Width = 181.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Family, Size, Style, FontColor, Other]
+    OnKeyUp = Edit4KeyUp
+    OnExit = Edit4Exit
+  end
+  object Label5: TLabel
+    Align = Scale
+    StyledSettings = [Family, Size, Style]
+    Position.X = 29.000000000000000000
+    Position.Y = 272.000000000000000000
+    Size.Width = 108.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.FontColor = claWhite
+    Text = '4'#176' Faixa'
+  end
+  object Label7: TLabel
+    Align = Scale
+    StyledSettings = [Family, Size]
+    Position.X = 162.000000000000000000
+    Position.Y = 376.000000000000000000
+    Size.Width = 108.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Style = [fsBold]
+    TextSettings.FontColor = claWhite
+    Text = 'O valor '#233':'
+  end
+  object Edit5: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Align = Scale
+    TabOrder = 4
+    KeyboardType = Alphabet
+    TextSettings.FontColor = claMediumblue
+    Position.X = 114.000000000000000000
+    Position.Y = 312.000000000000000000
+    Size.Width = 183.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    TextPrompt = 'Digite "nenhum" se n'#227'o ter cores'
+    StyledSettings = [Family, Size, Style, FontColor, Other]
+    OnKeyUp = Edit5KeyUp
+    OnExit = Edit5Exit
+  end
+  object Button1: TButton
+    Align = Scale
+    Margins.Left = 5.000000000000000000
+    Margins.Top = 5.000000000000000000
+    Margins.Right = 5.000000000000000000
+    Margins.Bottom = 5.000000000000000000
+    Position.X = 83.000000000000000000
+    Position.Y = 472.000000000000000000
+    Size.Width = 48.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'backtoolbutton'
+    TabOrder = 6
+    OnClick = Button1Click
+  end
+  object Edit6: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Align = Scale
+    TabOrder = 5
+    ReadOnly = True
+    TextSettings.FontColor = claMediumblue
+    Position.X = 68.000000000000000000
+    Position.Y = 408.000000000000000000
+    Size.Width = 245.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Label6: TLabel
+    Align = Scale
+    StyledSettings = [Family, Size, Style]
+    Position.X = 29.000000000000000000
+    Position.Y = 320.000000000000000000
+    Size.Width = 108.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.FontColor = claWhite
+    Text = '5'#176' Faixa'
+  end
+  object Button2: TButton
+    Align = Scale
+    StyledSettings = [Family, Size, Style]
+    Position.X = 200.000000000000000000
+    Position.Y = 472.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    Text = 'Limpar'
+    TextSettings.FontColor = claDarkslateblue
+    TintColor = claTurquoise
+    OnClick = Button2Click
+  end
+  object Label8: TLabel
+    Align = Scale
+    StyledSettings = [Family, Size, Style]
+    Position.X = 304.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 66.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.FontColor = claWhite
+    Text = '...'
+  end
+  object Label9: TLabel
+    Align = Scale
+    StyledSettings = [Family, Size, Style]
+    Position.X = 304.000000000000000000
+    Position.Y = 176.000000000000000000
+    Size.Width = 66.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.FontColor = claWhite
+    Text = '...'
+  end
+  object Label10: TLabel
+    Align = Scale
+    StyledSettings = [Family, Size, Style]
+    Position.X = 304.000000000000000000
+    Position.Y = 224.000000000000000000
+    Size.Width = 66.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.FontColor = claWhite
+    Text = '...'
+  end
+  object Label11: TLabel
+    Align = Scale
+    StyledSettings = [Family, Size, Style]
+    Position.X = 304.000000000000000000
+    Position.Y = 272.000000000000000000
+    Size.Width = 66.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.FontColor = claWhite
+    Text = '...'
+  end
+  object Label12: TLabel
+    Align = Scale
+    StyledSettings = [Family, Size, Style]
+    Position.X = 306.000000000000000000
+    Position.Y = 320.000000000000000000
+    Size.Width = 66.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.FontColor = claWhite
+    Text = '...'
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 32
+    Top = 48
+  end
+  object Timer2: TTimer
+    Enabled = False
+    OnTimer = Timer2Timer
+    Left = 104
+    Top = 48
+  end
+  object Timer3: TTimer
+    Enabled = False
+    Left = 232
+    Top = 48
+  end
+  object Timer4: TTimer
+    Enabled = False
+    OnTimer = Timer4Timer
+    Left = 304
+    Top = 48
+  end
+end

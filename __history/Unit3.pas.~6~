@@ -1,0 +1,66 @@
+unit Unit3;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Edit, FMX.Controls.Presentation;
+
+type
+  TForm3 = class(TForm)
+    Label1: TLabel;
+    HeaderLabel: TLabel;
+    Label2: TLabel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Label3: TLabel;
+    Label4: TLabel;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    Label5: TLabel;
+    Label6: TLabel;
+    Edit5: TEdit;
+    Button2: TButton;
+    Button1: TButton;
+    Edit6: TEdit;
+    Label7: TLabel;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.fmx}
+
+uses HeaderFooterTemplate;
+
+procedure TForm3.Button1Click(Sender: TObject);
+begin
+      Form3:=nil;
+      hide;
+      Edit1.Text:='';
+      Edit2.Text:='';
+      Edit3.Text:='';
+      Edit4.Text:='';
+      Edit5.Text:='';
+end;
+
+procedure TForm3.Button2Click(Sender: TObject);
+begin
+    Edit1.text:='';
+    Edit2.text:='';
+    Edit3.text:='';
+    Edit4.text:='';
+    Edit5.text:='';
+    Edit6.text:='';
+end;
+
+end.

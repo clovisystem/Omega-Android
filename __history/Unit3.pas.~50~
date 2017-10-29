@@ -1,0 +1,1015 @@
+unit Unit3;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Edit, FMX.Controls.Presentation;
+
+type
+  TForm3 = class(TForm)
+    Label1: TLabel;
+    HeaderLabel: TLabel;
+    Label2: TLabel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Label3: TLabel;
+    Label4: TLabel;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    Label5: TLabel;
+    Label7: TLabel;
+    Edit5: TEdit;
+    Button1: TButton;
+    Edit6: TEdit;
+    Label6: TLabel;
+    Button2: TButton;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Timer1: TTimer;
+    Timer2: TTimer;
+    Timer3: TTimer;
+    Timer4: TTimer;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure Timer2Timer(Sender: TObject);
+    procedure Timer4Timer(Sender: TObject);
+    procedure Edit1KeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure Edit2KeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure Edit3KeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure Edit4KeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure Edit5KeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure Edit6CanFocus(Sender: TObject; var ACanFocus: Boolean);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.fmx}
+
+uses HeaderFooterTemplate;
+
+procedure TForm3.Button1Click(Sender: TObject);
+begin
+      Form3:=nil;
+      hide;
+      Edit1.Text:='';
+      Edit2.Text:='';
+      Edit3.Text:='';
+      Edit4.Text:='';
+      Edit5.Text:='';
+end;
+
+procedure TForm3.Button2Click(Sender: TObject);
+begin
+    Edit1.text:='';
+    Edit2.text:='';
+    Edit3.text:='';
+    Edit4.text:='';
+    Edit5.text:='';
+    Edit6.text:='';
+
+
+    //Edit1.text:='';
+    Edit2.visible:=false;
+    Edit3.visible:=false;
+    Edit4.visible:=false;
+    Edit5.visible:=false;
+    Edit6.visible:=false;
+
+    label6.Visible:=false;
+    label7.Visible:=false;
+    label8.Visible:=false;
+    label9.Visible:=false;
+    label10.Visible:=false;
+    label11.Visible:=false;
+    label12.Visible:=false;
+end;
+
+
+
+procedure TForm3.Edit1KeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+  Shift: TShiftState);
+var texto:string;
+
+
+begin
+  texto:=Edit1.Text;
+  Edit1.Text:=StringReplace(texto,' ',EmptyStr,[rfReplaceAll]);
+
+begin
+
+
+if(Edit1.Text.Length > 0) then
+begin
+  button2.Visible:=true;
+
+end;
+
+if(Edit1.Text.Length > 3) then
+begin
+  Edit2.Visible:=true;
+  label3.Visible:=true;
+end;
+
+If (Edit1.Text='marrom') then
+begin
+Edit1.fontcolor:=talphacolorrec.Maroon;
+
+end;
+If (Edit1.Text='vermelho') then
+begin
+Edit1.fontcolor:=talphacolorrec.red;
+end;
+If (Edit1.Text='laranja') then
+begin
+Edit1.fontcolor:=talphacolorrec.Orange;
+end;
+If (Edit1.Text='amarelo') then
+begin
+Edit1.fontcolor:=talphacolorrec.yellow;
+end;
+If (Edit1.Text='verde') then
+begin
+Edit1.fontcolor:=talphacolorrec.Green;
+end;
+If (Edit1.Text='azul') then
+begin
+Edit1.fontcolor:=talphacolorrec.Blue;
+end;
+If (Edit1.Text='roxo')  then
+begin
+Edit1.fontcolor:=talphacolorrec.Purple;
+end;
+If (Edit1.Text='violeta')  then
+begin
+Edit1.fontcolor:=talphacolorrec.Purple;
+end;
+If (Edit1.Text='preto') then
+begin
+Edit1.fontcolor:=talphacolorrec.Black;
+end;
+If (Edit1.Text='cinza') then
+begin
+Edit1.fontcolor:=talphacolorrec.Gray;
+end;
+If (Edit1.Text='branco') then
+begin
+Edit1.fontcolor:=talphacolorrec.lightgray;
+end;
+end;
+end;
+
+procedure TForm3.Edit2KeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+  Shift: TShiftState);
+
+var
+texto2: string;
+texto1: string;
+
+
+
+begin
+  texto1:=Edit1.Text;
+  texto2:=Edit2.Text;
+  Edit2.Text:=StringReplace(texto2,' ',EmptyStr,[rfReplaceAll]);
+begin
+if(Edit2.Text.Length > 3) then
+begin
+  Edit3.Visible:=true;
+  label4.Visible:=true;
+end;
+
+  If (Edit2.Text='marrom') then
+begin
+Edit2.fontcolor:=talphacolorrec.Maroon;
+end;
+If (Edit2.Text='vermelho') then
+begin
+Edit2.fontcolor:=talphacolorrec.Red;
+end;
+If (Edit2.Text='laranja') then
+begin
+Edit2.fontcolor:=talphacolorrec.Orange;
+end;
+If (Edit2.Text='amarelo') then
+begin
+Edit2.fontcolor:=talphacolorrec.Yellow;
+end;
+If (Edit2.Text='verde') then
+begin
+Edit2.fontcolor:=talphacolorrec.Green;
+end;
+If (Edit2.Text='azul') then
+begin
+Edit2.fontcolor:=talphacolorrec.Blue;
+end;
+If (Edit2.Text='roxo')  then
+begin
+Edit2.fontcolor:=talphacolorrec.Purple;
+end;
+If (Edit2.Text='violeta')  then
+begin
+Edit2.fontcolor:=talphacolorrec.Purple;
+end;
+If (Edit2.Text='preto') then
+begin
+Edit2.fontcolor:=talphacolorrec.Black;
+end;
+If (Edit2.Text='cinza') then
+begin
+Edit2.fontcolor:=talphacolorrec.Gray;
+end;
+If (Edit2.Text='branco') then
+begin
+Edit2.fontcolor:=talphacolorrec.lightgray;
+end;
+end;
+if (texto1 <> 'amarelo') or (texto1 <> 'azul') or  (texto1 <>'branco') or  (texto1 <>'cinza') or  (texto1 <>'vermelho') or  (texto1 <>'laranja') or  (texto1 <>'roxo') or  (texto1 <>'violeta') or  (texto1 <>'lilas') or  (texto1 <>'lilás') or (texto1 <>'verde') or  (texto1 <>'preto') or  (texto1 <>'marrom') then
+ begin
+   Edit1.Text:='Essa cor não existe nos códigos'
+
+end;
+IF (TEXTO1 <> 'AMARELO') OR (TEXTO1 <> 'AZUL') OR  (TEXTO1 <>'BRANCO') OR  (TEXTO1 <>'CINZA') OR  (TEXTO1 <>'VERMELHO') OR  (TEXTO1 <>'LARANJA') OR  (TEXTO1 <>'ROXO') OR  (TEXTO1 <>'VIOLETA') OR  (TEXTO1 <>'LILAS') OR  (TEXTO1 <>'LILÁS') OR (TEXTO1 <>'VERDE') OR  (TEXTO1 <>'PRETO') OR  (TEXTO1 <>'MARROM') THEN
+ BEGIN
+   EDIT1.TEXT:='ESSA COR NÃO EXISTE NOS CÓDIGOS'
+
+END;
+end;
+
+
+
+
+procedure TForm3.Edit3KeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+  Shift: TShiftState);
+var
+texto3: string;
+texto2: string;
+
+
+begin
+  texto2:=Edit2.Text;
+  texto3:=Edit3.Text;
+  Edit3.Text:=StringReplace(texto3,' ',EmptyStr,[rfReplaceAll]);
+begin
+    if(Edit3.Text.Length > 3) then
+begin
+  Edit4.Visible:=true;
+  label5.Visible:=true;
+end;
+
+  If (Edit3.Text='marrom') then
+begin
+Edit3.fontcolor:=talphacolorrec.Maroon;
+end;
+If (Edit3.Text='vermelho') then
+begin
+Edit3.fontcolor:=talphacolorrec.Red;
+end;
+If (Edit3.Text='laranja') then
+begin
+Edit3.fontcolor:=talphacolorrec.Orange;
+end;
+If (Edit3.Text='amarelo') then
+begin
+Edit3.fontcolor:=talphacolorrec.Yellow;
+end;
+If (Edit3.Text='verde') then
+begin
+Edit3.fontcolor:=talphacolorrec.Green;
+end;
+If (Edit3.Text='azul') then
+begin
+Edit3.fontcolor:=talphacolorrec.Blue;
+end;
+If (Edit3.Text='roxo')  then
+begin
+Edit3.fontcolor:=talphacolorrec.Purple;
+end;
+If (Edit3.Text='violeta')  then
+begin
+Edit3.fontcolor:=talphacolorrec.Purple;
+end;
+If (Edit3.Text='preto') then
+begin
+Edit3.fontcolor:=talphacolorrec.Black;
+end;
+If (Edit3.Text='cinza') then
+begin
+Edit3.fontcolor:=talphacolorrec.Gray;
+end;
+If (Edit3.Text='branco') then
+begin
+Edit3.fontcolor:=talphacolorrec.lightgray;
+end;
+end;
+if (texto2 <> 'amarelo') or (texto2 <> 'azul') or  (texto2 <>'branco') or  (texto2 <>'cinza') or  (texto2 <>'vermelho') or  (texto2 <>'laranja') or  (texto2 <>'roxo') or  (texto2 <>'violeta') or  (texto2 <>'lilas') or  (texto2 <>'lilás') or (texto2 <>'verde') or  (texto2 <>'preto') or  (texto2 <>'marrom') then
+ begin
+   Edit2.Text:='Essa cor não existe nos códigos'
+
+end;
+IF (TEXTO2 <> 'AMARELO') OR (TEXTO2 <> 'AZUL') OR  (TEXTO2 <>'BRANCO') OR  (TEXTO2 <>'CINZA') OR  (TEXTO2 <>'VERMELHO') OR  (TEXTO2 <>'LARANJA') OR  (TEXTO2 <>'ROXO') OR  (TEXTO2 <>'VIOLETA') OR  (TEXTO2 <>'LILAS') OR  (TEXTO2 <>'LILÁS') OR (TEXTO2 <>'VERDE') OR  (TEXTO2 <>'PRETO') OR  (TEXTO2 <>'MARROM') THEN
+ BEGIN
+   EDIT2.TEXT:='ESSA COR NÃO EXISTE NOS CÓDIGOS'
+
+END;
+
+
+end;
+
+procedure TForm3.Edit4KeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+  Shift: TShiftState);
+var
+texto4: string;
+texto3: string;
+
+
+begin
+  texto3:=Edit3.Text;
+  texto4:=Edit4.Text;
+  Edit4.Text:=StringReplace(texto4,' ',EmptyStr,[rfReplaceAll]);
+begin
+    if(Edit4.Text.Length > 3) then
+begin
+  Edit5.Visible:=true;
+  label6.Visible:=true;
+end;
+
+  If (Edit4.Text='marrom') then
+begin
+Edit4.fontcolor:=talphacolorrec.Maroon;
+end;
+If (Edit4.Text='vermelho') then
+begin
+Edit4.fontcolor:=talphacolorrec.Red;
+end;
+If (Edit4.Text='laranja') then
+begin
+Edit4.fontcolor:=talphacolorrec.Orange;
+end;
+If (Edit4.Text='amarelo') then
+begin
+Edit4.fontcolor:=talphacolorrec.Yellow;
+end;
+If (Edit4.Text='verde') then
+begin
+Edit4.fontcolor:=talphacolorrec.Green;
+end;
+If (Edit4.Text='azul') then
+begin
+Edit4.fontcolor:=talphacolorrec.Blue;
+end;
+If (Edit3.Text='roxo')  then
+begin
+Edit4.fontcolor:=talphacolorrec.Purple;
+end;
+If (Edit4.Text='violeta')  then
+begin
+Edit4.fontcolor:=talphacolorrec.Purple;
+end;
+If (Edit4.Text='preto') then
+begin
+Edit4.fontcolor:=talphacolorrec.Black;
+end;
+If (Edit4.Text='cinza') then
+begin
+Edit4.fontcolor:=talphacolorrec.Gray;
+end;
+If (Edit4.Text='branco') then
+begin
+Edit4.fontcolor:=talphacolorrec.lightgray;
+end;
+end;
+if (texto3 <> 'amarelo') or (texto3 <> 'azul') or  (texto3 <>'branco') or  (texto3 <>'cinza') or  (texto3 <>'vermelho') or  (texto3 <>'laranja') or  (texto3 <>'roxo') or  (texto3 <>'violeta') or  (texto3 <>'lilas') or  (texto3 <>'lilás') or (texto3 <>'verde') or  (texto3 <>'preto') or  (texto3 <>'marrom') then
+ begin
+   Edit3.Text:='Essa cor não existe nos códigos'
+
+end;
+IF (TEXTO3 <> 'AMARELO') OR (TEXTO3 <> 'AZUL') OR  (TEXTO3 <>'BRANCO') OR  (TEXTO3 <>'CINZA') OR  (TEXTO3 <>'VERMELHO') OR  (TEXTO3 <>'LARANJA') OR  (TEXTO3 <>'ROXO') OR  (TEXTO3 <>'VIOLETA') OR  (TEXTO3 <>'LILAS') OR  (TEXTO3 <>'LILÁS') OR (TEXTO3 <>'VERDE') OR  (TEXTO3 <>'PRETO') OR  (TEXTO3 <>'MARROM') THEN
+ BEGIN
+   EDIT3.TEXT:='ESSA COR NÃO EXISTE NOS CÓDIGOS'
+
+ END;
+end;
+
+procedure TForm3.Edit5KeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+  Shift: TShiftState);
+var
+texto5: string;
+texto4: string;
+
+
+begin
+  texto4:=Edit3.Text;
+  texto5:=Edit5.Text;
+  Edit5.Text:=StringReplace(texto5,' ',EmptyStr,[rfReplaceAll]);
+begin
+    if(Edit5.Text.Length > 3) then
+begin
+  Edit6.Visible:=true;
+  label7.Visible:=true;
+end;
+
+if(Edit4.Text.Length > 3) then
+begin
+  Edit5.Visible:=true;
+end;
+
+Timer1.Enabled:=true;
+
+If (Edit5.Text='marrom') then
+begin
+Edit5.fontcolor:=talphacolorrec.Maroon;
+end;
+If (Edit5.Text='vermelho') then
+begin
+Edit5.fontcolor:=talphacolorrec.Red;
+end;
+If (Edit5.Text='laranja') then
+begin
+Edit5.text:='Digite a cor certa.';
+label8.text:='';
+label9.text:='';
+label10.text:='';
+label11.text:='';
+label12.text:='';
+
+
+Edit4.Text:='';
+Edit3.Text:='';
+Edit2.Text:='';
+Edit1.Text:='';
+Timer1.Enabled:=False;
+Timer2.Enabled:=False;
+
+end;
+If (Edit5.Text='amarelo') then
+begin
+Edit5.text:='Digite a cor certa.';
+label8.text:='';
+label9.text:='';
+label10.text:='';
+label11.text:='';
+label12.text:='';
+
+
+Edit4.Text:='';
+Edit3.Text:='';
+Edit2.Text:='';
+Edit1.Text:='';
+Timer1.Enabled:=False;
+Timer2.Enabled:=False;
+end;
+
+If (Edit5.Text='verde') then
+begin
+Edit5.text:='Digite a cor certa.';
+label8.text:='';
+label9.text:='';
+label10.text:='';
+label11.text:='';
+label12.text:='';;
+
+
+Edit4.Text:='';
+Edit3.Text:='';
+Edit2.Text:='';
+Edit1.Text:='';
+Timer1.Enabled:=False;
+Timer2.Enabled:=False;
+end;
+
+If (Edit5.Text='azul') then
+begin
+Edit5.text:='Digite a cor certa.';
+label8.text:='';
+label9.text:='';
+label10.text:='';
+label11.text:='';
+label12.text:='';
+
+
+Edit4.Text:='';
+Edit3.Text:='';
+Edit2.Text:='';
+Edit1.Text:='';
+Timer1.Enabled:=False;
+Timer2.Enabled:=False;
+end;
+
+If (Edit5.Text='roxo')  then
+begin
+Edit5.text:='Digite a cor certa.';
+label8.text:='';
+label9.text:='';
+label10.text:='';
+label11.text:='';
+label12.text:='';
+
+
+Edit4.Text:='';
+Edit3.Text:='';
+Edit2.Text:='';
+Edit1.Text:='';
+Timer1.Enabled:=False;
+Timer2.Enabled:=False;
+
+end;
+If (Edit5.Text='violeta')  then
+begin
+Edit5.text:='Digite a cor certa.';
+label8.text:='';
+label9.text:='';
+label10.text:='';
+label11.text:='';
+label12.text:='';
+
+
+Edit4.Text:='';
+Edit3.Text:='';
+Edit2.Text:='';
+Edit1.Text:='';
+Timer1.Enabled:=False;
+Timer2.Enabled:=False;
+
+end;
+If (Edit5.Text='preto') then
+begin
+Edit5.text:='Digite a cor certa.';
+label8.text:='';
+label9.text:='';
+label10.text:='';
+label11.text:='';
+label12.text:='';
+
+
+Edit4.Text:='';
+Edit3.Text:='';
+Edit2.Text:='';
+Edit1.Text:='';
+Timer1.Enabled:=False;
+Timer2.Enabled:=False;
+
+end;
+If (Edit5.Text='cinza') then
+begin
+Edit5.text:='Digite a cor certa.';
+label8.text:='';
+label9.text:='';
+label10.text:='';
+label11.text:='';
+label12.text:='';
+
+
+Edit4.Text:='';
+Edit3.Text:='';
+Edit2.Text:='';
+Edit1.Text:='';
+Timer1.Enabled:=False;
+Timer2.Enabled:=False;
+end;
+
+If (Edit5.Text='branco') then
+begin
+Edit5.text:='Digite a cor certa.';
+label8.text:='';
+label9.text:='';
+label10.text:='';
+label11.text:='';
+label12.text:='';
+
+
+
+Edit4.Text:='';
+Edit3.Text:='';
+Edit2.Text:='';
+Edit1.Text:='';
+Timer1.Enabled:=False;
+Timer2.Enabled:=False;
+end;
+If (Edit5.Text='ouro') then
+begin
+Edit5.fontcolor:=talphacolorrec.Yellow;
+end;
+If (Edit5.Text='prata') then
+begin
+Edit5.fontcolor:=talphacolorrec.Silver;
+end;
+If (Edit5.Text='') then
+begin
+Timer1.Enabled:=true;
+end;
+
+end;
+if (texto4 <> 'amarelo') or (texto4 <> 'azul') or  (texto4 <>'branco') or  (texto4 <>'cinza') or  (texto4 <>'vermelho') or  (texto4 <>'laranja') or  (texto4 <>'roxo') or  (texto4 <>'violeta') or  (texto4 <>'lilas') or  (texto4 <>'lilás') or (texto4 <>'verde') or  (texto4 <>'preto') or  (texto4 <>'marrom') then
+ begin
+   Edit4.Text:='Essa cor não existe nos códigos'
+
+end;
+end;
+
+procedure TForm3.Edit6CanFocus(Sender: TObject; var ACanFocus: Boolean);
+var
+texto5:string;
+begin
+texto5:=Edit5.Text;
+if (texto5 <> 'ouro') or (texto5 <> 'prata') or  (texto5 <>'marrom') or  (texto5 <>'vermelho') or  (texto5 <>'cinza') or  (texto5 <>'preto') then
+ begin
+   Edit5.Text:='Essa cor não existe nos códigos'
+
+ end;
+
+ IF (TEXTO5 <> 'OURO') OR (TEXTO5 <> 'PRATA') OR  (TEXTO5 <>'MARROM') OR  (TEXTO5 <>'VERMELHO') OR  (TEXTO5 <>'CINZA') OR  (TEXTO5 <>'PRETO') THEN
+ BEGIN
+   EDIT5.TEXT:='ESSA COR NÃO EXISTE NOS CÓDIGOS'
+
+ END;
+
+
+end;
+
+procedure TForm3.FormShow(Sender: TObject);
+  {var
+  texto,texto2,texto3,texto4,texto5:string;
+begin
+  texto:=Edit1.Text;
+  Edit1.Text:=StringReplace(texto,' ',EmptyStr,[rfReplaceAll]);
+
+  texto2:=Edit2.Text;
+  Edit2.Text:=StringReplace(texto,' ',EmptyStr,[rfReplaceAll]);
+
+  texto3:=Edit3.Text;
+  Edit3.Text:=StringReplace(texto,' ',EmptyStr,[rfReplaceAll]);
+
+  texto4:=Edit4.Text;
+  Edit3.Text:=StringReplace(texto,' ',EmptyStr,[rfReplaceAll]);
+
+  texto5:=Edit5.Text;
+  Edit3.Text:=StringReplace(texto,' ',EmptyStr,[rfReplaceAll]); }
+  begin
+
+
+
+
+
+  label3.Visible:=false;
+  label4.Visible:=false;
+  label5.Visible:=false;
+  label6.Visible:=false;
+  label7.Visible:=false;
+  label8.Visible:=false;
+  label9.Visible:=false;
+  label10.Visible:=false;
+  label11.Visible:=false;
+  label12.Visible:=false;
+
+
+  edit1.SetFocus;
+
+  edit2.Visible:=false;
+  edit3.Visible:=false;
+  edit4.Visible:=false;
+  edit5.Visible:=false;
+  edit6.Visible:=false;
+
+  button2.Visible:=false;
+
+
+end;
+
+procedure TForm3.Timer1Timer(Sender: TObject);
+begin
+If (Edit1.Text='marrom') then
+begin
+label8.Visible:=true;
+
+label8.text:='1';
+label8.fontcolor:=talphacolorrec.Maroon;
+
+end
+Else If (Edit1.Text='vermelho') then
+begin
+label8.Visible:=true;
+
+label8.text:='2';
+label8.fontcolor:=talphacolorrec.Red;
+end
+Else If (Edit1.Text='laranja') then
+begin
+label8.Visible:=true;
+
+label8.text:='3';
+label8.fontcolor:=talphacolorrec.Orange;
+end
+Else If (Edit1.Text='amarelo') then
+begin
+label8.Visible:=true;
+label8.text:='4';
+label8.fontcolor:=talphacolorrec.Yellow;
+end
+Else If (Edit1.Text='verde') then
+begin
+label8.Visible:=true;
+label8.text:='5';
+label8.fontcolor:=talphacolorrec.Green;
+end
+Else If (Edit1.Text='azul') then
+begin
+label8.Visible:=true;
+label8.text:='6';
+label8.fontcolor:=talphacolorrec.Blue;
+end
+Else If (Edit1.Text='roxo' ) Or (Edit1.Text='violeta' ) then
+begin
+label8.Visible:=true;
+label8.text:='7';
+label8.fontcolor:=talphacolorrec.Purple;
+end
+Else If (Edit1.Text='cinza') then
+begin
+label8.Visible:=true;
+label8.text:='8';
+label8.fontcolor:=talphacolorrec.Gray;
+end
+Else If (Edit1.Text='branco') then
+begin
+label8.Visible:=true;
+label8.text:='9';
+label8.fontcolor:=talphacolorrec.lightgray;
+end
+Else If (Edit1.Text='preto') then
+begin
+label8.Visible:=true;
+label8.text:=' ';
+label8.fontcolor:=talphacolorrec.lightgray;
+
+timer1.Enabled:=false;
+
+
+ end;
+
+
+If (Edit2.Text='marrom') then
+begin
+label9.Visible:=true;
+label9.text:='1';
+label9.fontcolor:=talphacolorrec.Maroon;
+end
+Else If (Edit2.Text='vermelho') then
+begin
+label9.Visible:=true;
+label9.text:='2';
+label9.fontcolor:=talphacolorrec.Red;
+end
+Else If (Edit2.Text='laranja') then
+begin
+label9.Visible:=true;
+label9.text:='3';
+label9.fontcolor:=talphacolorrec.Orange;
+end
+Else If (Edit2.Text='amarelo') then
+begin
+label9.Visible:=true;
+label9.text:='4';
+label9.fontcolor:=talphacolorrec.Yellow;
+end
+Else If (Edit2.Text='verde') then
+begin
+label9.Visible:=true;
+label9.text:='5';
+label9.fontcolor:=talphacolorrec.Green;
+end
+Else If (Edit2.Text='azul') then
+begin
+label9.Visible:=true;
+label9.text:='6';
+label9.fontcolor:=talphacolorrec.Blue;
+end
+Else If (Edit2.Text='roxo') Or (Edit3.Text='violeta') then
+begin
+label9.Visible:=true;
+label9.text:='7';
+label9.fontcolor:=talphacolorrec.Purple;
+end
+Else If (Edit2.Text='cinza') then
+begin
+label9.Visible:=true;
+label9.text:='8';
+label9.fontcolor:=talphacolorrec.Gray;
+end
+Else If (Edit2.Text='branco') then
+begin
+label9.Visible:=true;
+label9.text:='9';
+label9.fontcolor:=talphacolorrec.lightgray;
+end
+Else If (Edit2.Text='preto') then
+begin
+label9.Visible:=true;
+label9.text:=' ';
+label9.fontcolor:=talphacolorrec.Black;
+end;
+
+
+
+
+If (Edit3.Text='marrom') then
+begin
+label10.Visible:=true;
+label10.text:='1';
+label10.fontcolor:=talphacolorrec.Maroon;
+end
+Else If (Edit3.Text='vermelho') then
+begin
+label10.Visible:=true;
+label10.text:='2';
+label10.fontcolor:=talphacolorrec.Red;
+end
+Else If (Edit3.Text='laranja') then
+begin
+label10.Visible:=true;
+label10.text:='3';
+label10.fontcolor:=talphacolorrec.Orange;
+end
+Else If (Edit3.Text='amarelo') then
+begin
+label10.Visible:=true;
+label10.text:='4';
+label10.fontcolor:=talphacolorrec.Yellow;
+end
+Else If (Edit3.Text='verde') then
+begin
+label10.Visible:=true;
+label10.text:='5';
+label10.fontcolor:=talphacolorrec.Green;
+end
+Else If (Edit3.Text='azul') then
+begin
+label10.Visible:=true;
+label10.text:='6';
+label10.fontcolor:=talphacolorrec.Blue;
+end
+Else If (Edit3.Text='roxo') Or (Edit3.Text='violeta') then
+begin
+label10.Visible:=true;
+label10.text:='7';
+label10.fontcolor:=talphacolorrec.Purple;
+end
+Else If (Edit3.Text='cinza') then
+begin
+label10.Visible:=true;
+label10.text:='8';
+label10.fontcolor:=talphacolorrec.Gray;
+end
+Else If (Edit3.Text='branco') then
+begin
+label10.Visible:=true;
+label10.text:='9';
+label10.fontcolor:=talphacolorrec.lightgray;
+end
+Else If (Edit3.Text='preto') then
+begin
+label10.Visible:=true;
+label10.text:=' ';
+label10.fontcolor:=talphacolorrec.Black;
+end;
+
+
+timer2.Enabled:=true;
+
+
+If (Edit4.Text='marrom') then
+begin
+label11.Visible:=true;
+label11.text:='0';
+label11.fontcolor:=talphacolorrec.Maroon;
+end
+Else If (Edit4.Text='vermelho') then
+begin
+label11.Visible:=true;
+label11.text:='00';
+label11.fontcolor:=talphacolorrec.Red;
+end
+Else If (Edit4.Text='laranja') then
+begin
+label11.Visible:=true;
+label11.text:='000';
+label11.fontcolor:=talphacolorrec.Orange;
+end
+Else If (Edit4.Text='amarelo') then
+begin
+label11.Visible:=true;
+label11.text:='0000';
+label11.fontcolor:=talphacolorrec.Yellow;
+end
+Else If (Edit4.Text='verde') then
+begin
+label11.Visible:=true;
+label11.text:='00000';
+label11.fontcolor:=talphacolorrec.Green;
+end
+Else If (Edit4.Text='azul') then
+begin
+label11.Visible:=true;
+label11.text:='000000';
+label11.fontcolor:=talphacolorrec.Blue;
+end
+Else If (Edit4.Text='roxo') Or (Edit3.Text='violeta') then
+begin
+label11.Visible:=true;
+label11.text:='0000000';
+label11.fontcolor:=talphacolorrec.Purple;
+end
+Else If (Edit4.Text='cinza') then
+begin
+label11.Visible:=true;
+label11.text:='00000000';
+label11.fontcolor:=talphacolorrec.Gray;
+end
+Else If (Edit4.Text='branco') then
+begin
+label11.Visible:=true;
+label11.text:='000000000';
+label11.fontcolor:=talphacolorrec.lightgray;
+end
+Else If (Edit4.Text='preto') then
+begin
+label11.Visible:=true;
+label11.text:=' ';
+label11.fontcolor:=talphacolorrec.Black;
+end;
+
+
+
+
+
+If (Edit5.Text='marrom') then
+begin
+label12.Visible:=true;
+label12.text:='1%';
+label12.fontcolor:=talphacolorrec.Maroon;
+end
+Else If (Edit5.Text='vermelho') then
+begin
+label12.Visible:=true;
+label12.text:='2%';
+label12.fontcolor:=talphacolorrec.Red;
+end
+Else If (Edit5.Text='ouro') then
+begin
+label12.Visible:=true;
+label12.text:='5%';
+label12.fontcolor:=talphacolorrec.Yellow;
+end
+Else If (Edit5.Text='prata') then
+begin
+label12.Visible:=true;
+label12.text:='10%';
+label12.fontcolor:=talphacolorrec.Silver;
+end
+Else If (Edit5.Text=' ') then
+begin
+label12.Visible:=true;
+label12.text:='20%';
+label12.fontcolor:=talphacolorrec.lightgray;
+end
+
+
+
+
+
+end;
+
+
+
+
+
+procedure TForm3.Timer2Timer(Sender: TObject);
+begin
+     Timer4.enabled:=true;
+end;
+
+procedure TForm3.Timer4Timer(Sender: TObject);
+begin
+     edit6.text:=label8.text+label9.text+label10.text+label11.text+'Ohms'+'    '+label12.text+'tol';
+end;
+
+end.

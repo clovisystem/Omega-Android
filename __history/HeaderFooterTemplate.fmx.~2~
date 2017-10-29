@@ -1,0 +1,99 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = #937'mega'
+  ClientHeight = 567
+  ClientWidth = 384
+  Fill.Kind = Gradient
+  Fill.Gradient.Points = <
+    item
+      Color = claBlack
+      Offset = 0.000000000000000000
+    end
+    item
+      Color = xFF040404
+      Offset = 0.000000000000000000
+    end
+    item
+      Color = xFF6D6DF8
+      Offset = 1.000000000000000000
+    end>
+  Fill.Gradient.StartPosition.X = 0.500000000000000000
+  Fill.Gradient.StartPosition.Y = 1.000000000000000000
+  Fill.Gradient.StopPosition.X = 0.499999970197677600
+  Fill.Gradient.StopPosition.Y = 0.000000000000000000
+  Visible = True
+  FormFactor.Width = 1440
+  FormFactor.Height = 900
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Header: TToolBar
+    Size.Width = 384.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object HeaderLabel: TLabel
+      Align = Contents
+      StyledSettings = [Family]
+      Size.Width = 384.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'toollabel'
+      TextSettings.Font.Size = 30.000000000000000000
+      TextSettings.Font.Style = [fsBold]
+      TextSettings.FontColor = claDarkblue
+      TextSettings.HorzAlign = Center
+      Text = #937'mega'
+    end
+  end
+  object Footer: TToolBar
+    Align = Bottom
+    Position.Y = 519.000000000000000000
+    Size.Width = 384.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'bottomtoolbar'
+    TabOrder = 1
+  end
+  object RadioButton1: TRadioButton
+    Align = Scale
+    StyledSettings = [Family]
+    Position.X = 120.000000000000000000
+    Position.Y = 256.000000000000000000
+    Size.Width = 177.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = 'C'#243'digo com 4 faixas'
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.Font.Style = [fsBold]
+    TextSettings.FontColor = claWhite
+  end
+  object RadioButton2: TRadioButton
+    Align = Scale
+    StyledSettings = [Family]
+    Position.X = 120.000000000000000000
+    Position.Y = 304.000000000000000000
+    Size.Width = 185.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = 'C'#243'digo com 5 faixas'
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.Font.Style = [fsBold]
+    TextSettings.FontColor = claWhite
+  end
+  object Label1: TLabel
+    Align = Top
+    StyledSettings = [Family]
+    Position.Y = 48.000000000000000000
+    Size.Width = 384.000000000000000000
+    Size.Height = 45.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 26.000000000000000000
+    TextSettings.Font.Style = [fsBold]
+    TextSettings.FontColor = claWhite
+    TextSettings.HorzAlign = Center
+    Text = 'Qual Resistor voc'#234' procura?'
+  end
+end
