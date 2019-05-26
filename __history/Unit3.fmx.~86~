@@ -1,0 +1,350 @@
+object Form3: TForm3
+  Left = 0
+  Top = 0
+  Caption = 'Form3'
+  ClientHeight = 562
+  ClientWidth = 372
+  Fill.Kind = Gradient
+  Fill.Gradient.Points = <
+    item
+      Color = xFF091D5E
+      Offset = 0.000000000000000000
+    end
+    item
+      Color = xFF84A0E7
+      Offset = 1.000000000000000000
+    end>
+  Fill.Gradient.StartPosition.X = 0.500000000000000000
+  Fill.Gradient.StartPosition.Y = 1.000000000000000000
+  Fill.Gradient.StopPosition.X = 0.499999970197677600
+  Fill.Gradient.StopPosition.Y = 0.000000000000000000
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 3
+  object Label1: TLabel
+    Align = Horizontal
+    StyledSettings = [Family, Size, Style]
+    Position.Y = 56.000000000000000000
+    Size.Width = 372.000000000000000000
+    Size.Height = 57.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.FontColor = claWhite
+    TextSettings.HorzAlign = Center
+    Text = 'Digite a cor de cada faixa a seguir:'
+  end
+  object HeaderLabel: TLabel
+    Align = Top
+    StyledSettings = [Family]
+    Size.Width = 372.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'toollabel'
+    TextSettings.Font.Size = 30.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.FontColor = claSkyblue
+    TextSettings.HorzAlign = Center
+    Text = #937'mega'
+  end
+  object Label2: TLabel
+    Align = Scale
+    StyledSettings = [Family, Style]
+    Position.X = 29.000000000000000000
+    Position.Y = 120.000000000000000000
+    Size.Width = 36.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 10.000000000000000000
+    TextSettings.FontColor = claWhite
+    Text = '1'#176' Faixa'
+  end
+  object Label3: TLabel
+    Align = Scale
+    StyledSettings = [Family, Style]
+    Position.X = 29.000000000000000000
+    Position.Y = 168.000000000000000000
+    Size.Width = 44.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 10.000000000000000000
+    TextSettings.FontColor = claWhite
+    Text = '2'#176' Faixa'
+  end
+  object Label4: TLabel
+    Align = Scale
+    StyledSettings = [Family, Style]
+    Position.X = 29.000000000000000000
+    Position.Y = 216.000000000000000000
+    Size.Width = 44.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 10.000000000000000000
+    TextSettings.FontColor = claWhite
+    Text = '3'#176' Faixa'
+  end
+  object Label5: TLabel
+    Align = Scale
+    StyledSettings = [Family, Style]
+    Position.X = 29.000000000000000000
+    Position.Y = 264.000000000000000000
+    Size.Width = 44.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 10.000000000000000000
+    TextSettings.FontColor = claWhite
+    Text = '4'#176' Faixa'
+  end
+  object Label7: TLabel
+    Align = Scale
+    StyledSettings = [Family, Size]
+    Position.Y = 352.000000000000000000
+    Size.Width = 372.000000000000000000
+    Size.Height = 57.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.FontColor = claWhite
+    TextSettings.HorzAlign = Center
+    Text = 'O valor '#233':'
+  end
+  object Button1: TButton
+    Align = Scale
+    Margins.Left = 5.000000000000000000
+    Margins.Top = 5.000000000000000000
+    Margins.Right = 5.000000000000000000
+    Margins.Bottom = 5.000000000000000000
+    Position.X = 83.000000000000000000
+    Position.Y = 472.000000000000000000
+    Size.Width = 48.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'backtoolbutton'
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+  object Edit6: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Align = Scale
+    TabOrder = 0
+    ReadOnly = True
+    TextSettings.FontColor = claAqua
+    Position.X = 56.000000000000000000
+    Position.Y = 424.000000000000000000
+    Size.Width = 257.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Label6: TLabel
+    Align = Scale
+    StyledSettings = [Family, Style]
+    Position.X = 29.000000000000000000
+    Position.Y = 312.000000000000000000
+    Size.Width = 44.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 10.000000000000000000
+    TextSettings.FontColor = claWhite
+    Text = '5'#176' Faixa'
+  end
+  object Button2: TButton
+    Align = Scale
+    StyledSettings = [Family, Size, Style]
+    Position.X = 200.000000000000000000
+    Position.Y = 472.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = 'Limpar'
+    TextSettings.FontColor = claDarkslateblue
+    TintColor = claTurquoise
+    OnClick = Button2Click
+  end
+  object Label8: TLabel
+    Align = Scale
+    StyledSettings = [Family, Size, Style]
+    Position.X = 288.000000000000000000
+    Position.Y = 120.000000000000000000
+    Size.Width = 82.000000000000000000
+    Size.Height = 31.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.FontColor = claWhite
+    Text = '...'
+  end
+  object Label9: TLabel
+    Align = Scale
+    StyledSettings = [Family, Size, Style]
+    Position.X = 288.000000000000000000
+    Position.Y = 168.000000000000000000
+    Size.Width = 82.000000000000000000
+    Size.Height = 31.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.FontColor = claWhite
+    Text = '...'
+  end
+  object Label10: TLabel
+    Align = Scale
+    StyledSettings = [Family, Size, Style]
+    Position.X = 288.000000000000000000
+    Position.Y = 216.000000000000000000
+    Size.Width = 82.000000000000000000
+    Size.Height = 31.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.FontColor = claWhite
+    Text = '...'
+  end
+  object Label11: TLabel
+    Align = Scale
+    StyledSettings = [Family, Size, Style]
+    Position.X = 288.000000000000000000
+    Position.Y = 256.000000000000000000
+    Size.Width = 82.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.FontColor = claWhite
+    Text = '...'
+  end
+  object Label12: TLabel
+    Align = Scale
+    StyledSettings = [Family, Size, Style]
+    Position.X = 288.000000000000000000
+    Position.Y = 312.000000000000000000
+    Size.Width = 84.000000000000000000
+    Size.Height = 31.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.FontColor = claWhite
+    Text = '...'
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 32
+    Top = 48
+  end
+  object Timer2: TTimer
+    Enabled = False
+    OnTimer = Timer2Timer
+    Left = 104
+    Top = 48
+  end
+  object Timer3: TTimer
+    Enabled = False
+    Left = 232
+    Top = 48
+  end
+  object Timer4: TTimer
+    Enabled = False
+    OnTimer = Timer4Timer
+    Left = 304
+    Top = 48
+  end
+  object Button3: TButton
+    Position.X = 312.000000000000000000
+    Position.Y = 472.000000000000000000
+    Size.Width = 49.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    Text = 'Aguarde Novidades'
+    OnClick = Button3Click
+  end
+  object ComboBox1: TComboBox
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Items.Strings = (
+      'Amarelo'
+      'Azul'
+      'Branco'
+      'Cinza'
+      'Laranja'
+      'Marrom'
+      'Preto'
+      'Roxo'
+      'Verde'
+      'Vermelho')
+    Position.X = 80.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 201.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 16
+    OnChange = ComboBox1Change
+  end
+  object ComboBox2: TComboBox
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Items.Strings = (
+      'Amarelo'
+      'Azul'
+      'Branco'
+      'Cinza'
+      'Laranja'
+      'Marrom'
+      'Preto'
+      'Roxo'
+      'Verde'
+      'Vermelho')
+    Position.X = 80.000000000000000000
+    Position.Y = 176.000000000000000000
+    Size.Width = 201.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 15
+    OnChange = ComboBox2Change
+  end
+  object ComboBox3: TComboBox
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Items.Strings = (
+      'Amarelo'
+      'Azul'
+      'Branco'
+      'Cinza'
+      'Laranja'
+      'Marrom'
+      'Preto'
+      'Roxo'
+      'Verde'
+      'Vermelho')
+    Position.X = 80.000000000000000000
+    Position.Y = 224.000000000000000000
+    Size.Width = 201.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 14
+    OnChange = ComboBox3Change
+  end
+  object ComboBox4: TComboBox
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Items.Strings = (
+      'Amarelo'
+      'Azul'
+      'Branco'
+      'Cinza'
+      'Laranja'
+      'Marrom'
+      'Preto'
+      'Roxo'
+      'Verde'
+      'Vermelho')
+    Position.X = 80.000000000000000000
+    Position.Y = 272.000000000000000000
+    Size.Width = 201.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 13
+    OnChange = ComboBox4Change
+  end
+  object ComboBox5: TComboBox
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Items.Strings = (
+      'Ouro'
+      'Prata'
+      'Marrom'
+      'Vermelho'
+      'Nenhum')
+    Position.X = 80.000000000000000000
+    Position.Y = 320.000000000000000000
+    Size.Width = 201.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 12
+    OnChange = ComboBox5Change
+  end
+end

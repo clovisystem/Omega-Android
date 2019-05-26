@@ -1,0 +1,899 @@
+unit Unit3;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Edit, FMX.Controls.Presentation, FMX.ListBox;
+
+  {,FMX.Helpers.Android, Androidapi.JNI.GraphicsContentViewText,
+  Androidapi.JNI.Net, Androidapi.JNI.JavaTypes, idUri,Androidapi.IOUtils,  IdGlobalProtocols;
+   }
+   //USES usadas noandroid xe5 que nao deram certo com Delphi Tokio
+type
+  TForm3 = class(TForm)
+    Label1: TLabel;
+    HeaderLabel: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label7: TLabel;
+    Button1: TButton;
+    Edit6: TEdit;
+    Label6: TLabel;
+    Button2: TButton;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Timer1: TTimer;
+    Timer2: TTimer;
+    Timer3: TTimer;
+    Timer4: TTimer;
+    Button3: TButton;
+    ComboBox1: TComboBox;
+    ComboBox2: TComboBox;
+    ComboBox3: TComboBox;
+    ComboBox4: TComboBox;
+    ComboBox5: TComboBox;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure Timer2Timer(Sender: TObject);
+    procedure Timer4Timer(Sender: TObject);
+
+
+    procedure Button3Click(Sender: TObject);
+    procedure ComboBox1Change(Sender: TObject);
+    procedure ComboBox2Change(Sender: TObject);
+    procedure ComboBox3Change(Sender: TObject);
+    procedure ComboBox4Change(Sender: TObject);
+    procedure ComboBox5Change(Sender: TObject);
+
+
+    //procedure Edit6CanFocus(Sender: TObject; var ACanFocus: Boolean);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.fmx}
+{$R *.LgXhdpiTb.fmx ANDROID}
+{$R *.LgXhdpiPh.fmx ANDROID}
+
+uses HeaderFooterTemplate;
+
+
+
+function minusculo(texto: string): string; stdcall;
+const
+maiusculo = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+minusculo = 'qwertyuiopasdfghjklzxcvbnm';
+var
+x: Integer;
+begin
+for x := 1 to Length(texto) do
+if Pos(texto[x], maiusculo) <> 0 then
+texto[x] := minusculo[Pos(texto[x], maiusculo)];
+Result := texto;
+end;
+
+
+//foi colocado dois "C's" para funcionar em android
+function removeAcentos(texto:string):string;
+  Const ComAcento = '‡·„‚ËÈÍÌÏÓÚÛıÙ˙˘˚Ácc¿¡√¬»… ÃÕŒ“”’‘Ÿ⁄€«';
+  Const SemAcento = 'aaaaeeeiiioooouuucccAAAAEEEIIIOOOOUUUC';
+  var iFor : Integer;
+begin
+   for iFor := 1 to Length(texto) do begin
+      if Pos(texto[iFor],ComAcento) <> 0 then begin
+         texto[iFor] := SemAcento[Pos(texto[iFor],ComAcento)];
+      end;
+   end;
+   Result := texto;
+end;
+
+
+procedure TForm3.Button1Click(Sender: TObject);
+begin
+      Form3:=nil;
+      hide;
+
+end;
+
+procedure TForm3.Button2Click(Sender: TObject);
+begin
+
+    Edit6.text:='';
+
+    label7.text:='';
+    label8.text:='';
+    label9.text:='';
+    label10.text:='';
+
+    timer4.Enabled:=false;
+
+    Edit6.visible:=false;
+
+    label3.Visible:=false;
+    label4.Visible:=false;
+    label5.Visible:=false;
+    label6.Visible:=false;
+    label7.Visible:=false;
+    label8.Visible:=false;
+    label9.Visible:=false;
+    label10.Visible:=false;
+    label11.Visible:=false;
+    label12.Visible:=false;
+end;
+
+
+
+
+
+
+
+procedure TForm3.Button3Click(Sender: TObject);
+begin
+      Form3:=nil;
+      hide;
+
+end;
+
+procedure TForm3.ComboBox1Change(Sender: TObject);
+begin
+
+      ComboBox2.Visible:=true;
+
+      label3.Visible:=true;
+
+end;
+
+procedure TForm3.ComboBox2Change(Sender: TObject);
+begin
+    ComboBox3.Visible:=true;
+
+    label4.Visible:=true;
+end;
+
+procedure TForm3.ComboBox3Change(Sender: TObject);
+begin
+    ComboBox4.Visible:=true;
+
+    label5.Visible:=true;
+end;
+
+procedure TForm3.ComboBox4Change(Sender: TObject);
+begin
+    ComboBox5.Visible:=true;
+
+    label6.Visible:=true;
+end;
+
+procedure TForm3.ComboBox5Change(Sender: TObject);
+begin
+    edit6.fontcolor:=talphacolorrec.white;
+    edit6.Visible:=true;
+    label7.Visible:=true;
+end;
+
+{function OpenURLorFile(URL: string; const DisplayError: Boolean = False): Boolean;
+var
+  Intent: JIntent;
+  idMimeTable: TIdMimeTable;
+begin
+// There may be an issue with the geo: prefix and URLEncode.
+// will need to research
+  if URl.toLower.StartsWith('http://') then
+    Begin
+      Intent := TJIntent.JavaClass.init(TJIntent.JavaClass.ACTION_VIEW,
+      TJnet_Uri.JavaClass.parse(StringToJString(TIdURI.URLEncode(URL))));
+    End
+  Else
+    Begin
+     try
+       idMimeTable := TidMimeTable.Create;
+       Intent := TJIntent.Create;
+       Intent.setAction(TJIntent.JavaClass.ACTION_VIEW);
+       if not url.ToLower.StartsWith('file://') then
+         url := 'file://' + url;
+       Intent.setDataAndType(StrToJURI(Url),  StringToJString(idMimeTable.GetFileMIMEType(Url)));
+
+     Finally
+       try idMimeTable.Free; except end;
+     End;
+
+
+    End;
+  try
+    SharedActivity.startActivity(Intent);
+    exit(true);
+  except
+    on e: Exception do
+    begin
+      if DisplayError then ShowMessage('Error: ' + e.Message);
+      exit(false);
+    end;
+  end;
+end;   } //FUN«AO PARA ABRIR URL EM DELPHI XE5 que nao funcionou aqui no 10 TOKIO
+
+
+
+
+procedure TForm3.FormShow(Sender: TObject);
+  begin
+
+  label3.Visible:=false;
+  label4.Visible:=false;
+  label5.Visible:=false;
+  label6.Visible:=false;
+  label7.Visible:=false;
+  label8.Visible:=false;
+  label9.Visible:=false;
+  label10.Visible:=false;
+  label11.Visible:=false;
+  label12.Visible:=false;
+  ComboBox2.Visible:=false;
+  ComboBox3.Visible:=false;
+  ComboBox4.Visible:=false;
+  ComboBox5.Visible:=false;
+  Button3.Visible:=false;
+
+  edit6.Text:='';
+
+
+  edit6.Visible:=false;
+
+  button2.Visible:=false;
+
+
+end;
+
+
+
+
+
+procedure TForm3.Timer1Timer(Sender: TObject);
+begin
+If (ComboBox1.ItemIndex=0)then
+begin
+Label8.Visible:=true;
+
+Label8.text:='4';
+Label8.fontcolor:=talphacolorrec.Yellow;
+
+end
+
+
+Else If (ComboBox1.ItemIndex=1)then
+begin
+Label8.Visible:=true;
+
+Label8.text:='6';
+Label8.fontcolor:=talphacolorrec.Blue;
+end
+
+
+Else If (ComboBox1.ItemIndex=2)then
+begin
+Label8.Visible:=true;
+
+Label8.text:='9';
+Label8.fontcolor:=talphacolorrec.White;
+end
+
+
+Else If (ComboBox1.ItemIndex=3)then
+begin
+Label8.Visible:=true;
+Label8.text:='8';
+Label8.fontcolor:=talphacolorrec.lightgray;
+end
+
+
+Else If (ComboBox1.ItemIndex=4)then
+begin
+Label8.Visible:=true;
+Label8.text:='3';
+Label8.fontcolor:=talphacolorrec.Orange;
+end
+
+
+Else If (ComboBox1.ItemIndex=5)then
+begin
+Label8.Visible:=true;
+Label8.text:='1';
+Label8.fontcolor:=talphacolorrec.Maroon;
+end
+
+
+Else If (ComboBox1.ItemIndex=6)then
+begin
+Label8.Visible:=true;
+Label8.text:=' ';
+Label8.fontcolor:=talphacolorrec.Black;
+end
+
+
+Else If (ComboBox1.ItemIndex=7)then
+begin
+Label8.Visible:=true;
+Label8.text:='7';
+Label8.fontcolor:=talphacolorrec.Purple;
+end
+
+
+Else If (ComboBox1.ItemIndex=8)then
+begin
+Label8.Visible:=true;
+Label8.text:='5';
+Label8.fontcolor:=talphacolorrec.Green;
+end
+
+
+Else If (ComboBox1.ItemIndex=9)then
+begin
+Label8.Visible:=true;
+Label8.text:='2';
+Label8.fontcolor:=talphacolorrec.red;
+
+timer1.Enabled:=false;
+
+end;
+
+
+
+
+
+
+
+
+If (ComboBox2.ItemIndex=0)then
+begin
+Label9.Visible:=true;
+
+Label9.text:='4';
+Label9.fontcolor:=talphacolorrec.Yellow;
+
+end
+
+
+Else If (ComboBox2.ItemIndex=1)then
+begin
+Label9.Visible:=true;
+
+Label9.text:='6';
+Label9.fontcolor:=talphacolorrec.Blue;
+end
+
+
+Else If (ComboBox2.ItemIndex=2)then
+begin
+Label9.Visible:=true;
+
+Label9.text:='9';
+Label9.fontcolor:=talphacolorrec.White;
+end
+
+
+Else If (ComboBox2.ItemIndex=3)then
+begin
+Label9.Visible:=true;
+Label9.text:='8';
+Label9.fontcolor:=talphacolorrec.lightgray;
+end
+
+
+Else If (ComboBox2.ItemIndex=4)then
+begin
+Label9.Visible:=true;
+Label9.text:='3';
+Label9.fontcolor:=talphacolorrec.Orange;
+end
+
+
+Else If (ComboBox2.ItemIndex=5)then
+begin
+Label9.Visible:=true;
+Label9.text:='1';
+Label9.fontcolor:=talphacolorrec.Maroon;
+end
+
+
+Else If (ComboBox2.ItemIndex=6)then
+begin
+Label9.Visible:=true;
+Label9.text:=' ';
+Label9.fontcolor:=talphacolorrec.Black;
+end
+
+
+Else If (ComboBox2.ItemIndex=7)then
+begin
+Label9.Visible:=true;
+Label9.text:='7';
+Label9.fontcolor:=talphacolorrec.Purple;
+end
+
+
+Else If (ComboBox2.ItemIndex=8)then
+begin
+Label9.Visible:=true;
+Label9.text:='5';
+Label9.fontcolor:=talphacolorrec.Green;
+end
+
+
+Else If (ComboBox2.ItemIndex=9)then
+begin
+Label9.Visible:=true;
+Label9.text:='2';
+Label9.fontcolor:=talphacolorrec.red;
+
+timer1.Enabled:=false;
+
+end;
+
+
+
+
+
+
+
+
+If (ComboBox3.ItemIndex=0)then
+begin
+Label10.Visible:=true;
+
+Label10.text:='4';
+Label10.fontcolor:=talphacolorrec.Yellow;
+
+end
+
+
+Else If (ComboBox3.ItemIndex=1)then
+begin
+Label10.Visible:=true;
+
+Label10.text:='6';
+Label10.fontcolor:=talphacolorrec.Blue;
+end
+
+
+Else If (ComboBox3.ItemIndex=2)then
+begin
+Label10.Visible:=true;
+
+Label10.text:='9';
+Label10.fontcolor:=talphacolorrec.White;
+end
+
+
+Else If (ComboBox3.ItemIndex=3)then
+begin
+Label10.Visible:=true;
+Label10.text:='8';
+Label10.fontcolor:=talphacolorrec.lightgray;
+end
+
+
+Else If (ComboBox3.ItemIndex=4)then
+begin
+Label10.Visible:=true;
+Label10.text:='3';
+Label10.fontcolor:=talphacolorrec.Orange;
+end
+
+
+Else If (ComboBox3.ItemIndex=5)then
+begin
+Label10.Visible:=true;
+Label10.text:='1';
+Label10.fontcolor:=talphacolorrec.Maroon;
+end
+
+
+Else If (ComboBox3.ItemIndex=6)then
+begin
+Label10.Visible:=true;
+Label10.text:=' ';
+Label10.fontcolor:=talphacolorrec.Black;
+end
+
+
+Else If (ComboBox3.ItemIndex=7)then
+begin
+Label10.Visible:=true;
+Label10.text:='7';
+Label10.fontcolor:=talphacolorrec.Purple;
+end
+
+
+Else If (ComboBox3.ItemIndex=8)then
+begin
+Label10.Visible:=true;
+Label10.text:='5';
+Label10.fontcolor:=talphacolorrec.Green;
+end
+
+
+Else If (ComboBox3.ItemIndex=9)then
+begin
+Label10.Visible:=true;
+Label10.text:='2';
+Label10.fontcolor:=talphacolorrec.red;
+
+timer1.Enabled:=false;
+
+end;
+
+
+
+
+
+timer2.Enabled:=true;
+
+
+
+
+If (ComboBox4.ItemIndex=0)then
+begin
+Label11.Visible:=true;
+
+Label11.text:='0000';
+Label11.fontcolor:=talphacolorrec.Yellow;
+
+end
+
+
+Else If (ComboBox4.ItemIndex=1)then
+begin
+Label11.Visible:=true;
+
+Label11.text:='000000';
+Label11.fontcolor:=talphacolorrec.Blue;
+end
+
+
+Else If (ComboBox4.ItemIndex=2)then
+begin
+Label11.Visible:=true;
+
+Label11.text:='000000000';
+Label11.fontcolor:=talphacolorrec.White;
+end
+
+
+Else If (ComboBox4.ItemIndex=3)then
+begin
+Label11.Visible:=true;
+Label11.text:='00000000';
+Label11.fontcolor:=talphacolorrec.lightgray;
+end
+
+
+Else If (ComboBox4.ItemIndex=4)then
+begin
+Label11.Visible:=true;
+Label11.text:='000';
+Label11.fontcolor:=talphacolorrec.Orange;
+end
+
+
+Else If (ComboBox4.ItemIndex=5)then
+begin
+Label11.Visible:=true;
+Label11.text:='0';
+Label11.fontcolor:=talphacolorrec.Maroon;
+end
+
+
+Else If (ComboBox4.ItemIndex=6)then
+begin
+Label11.Visible:=true;
+Label11.text:='';
+Label11.fontcolor:=talphacolorrec.Black;
+end
+
+
+Else If (ComboBox4.ItemIndex=7)then
+begin
+Label11.Visible:=true;
+Label11.text:='0000000';
+Label11.fontcolor:=talphacolorrec.Purple;
+end
+
+
+Else If (ComboBox4.ItemIndex=8)then
+begin
+Label11.Visible:=true;
+Label11.text:='00000';
+Label11.fontcolor:=talphacolorrec.Green;
+end
+
+
+Else If (ComboBox4.ItemIndex=9)then
+begin
+Label11.Visible:=true;
+Label11.text:='00';
+Label11.fontcolor:=talphacolorrec.red;
+
+timer1.Enabled:=false;
+
+end;
+
+
+
+
+
+
+If (ComboBox5.ItemIndex=2)then
+begin
+Label12.Visible:=true;
+Label12.text:='1%';
+Label12.fontcolor:=talphacolorrec.Maroon;
+end
+
+
+Else If (ComboBox5.ItemIndex=3)then
+begin
+Label12.Visible:=true;
+Label12.text:='2%';
+Label12.fontcolor:=talphacolorrec.Red;
+end
+
+
+Else If (ComboBox5.ItemIndex=0)then
+begin
+Label12.Visible:=true;
+Label12.text:='5%';
+Label12.fontcolor:=talphacolorrec.Yellow;
+end
+
+
+Else If (ComboBox5.ItemIndex=1)then
+begin
+Label12.Visible:=true;
+Label12.text:='10%';
+Label12.fontcolor:=talphacolorrec.Silver;
+end
+
+
+Else If (ComboBox5.ItemIndex=4)then
+begin
+Label12.Visible:=true;
+Label12.text:='20%';
+Label12.fontcolor:=talphacolorrec.lightgray
+
+end;
+
+
+
+
+end;
+
+
+
+
+
+procedure TForm3.Timer2Timer(Sender: TObject);
+begin
+     Timer4.enabled:=true;
+end;
+
+procedure TForm3.Timer4Timer(Sender: TObject);
+{begin
+     edit6.text:=label8.text+label9.text+label10.text+label11.text+'Ohms'+'    '+label12.text+'tol';
+end;      }
+
+var
+  primeiraParte1:string;
+begin
+  {if label11.Text='000' then
+      begin
+        label11.Text:='Kilo'
+      end
+   else if label11.Text='000000' then
+      begin
+        label11.Text:='Mega';
+   end;  }
+    {else if label11.Text='0000' then
+      begin
+        label11.Text:='Kilo'
+   end
+   else if label11.Text='00000' then
+      begin
+        label11.Text:='Mega'
+   end
+   else if label11.Text='0000000' then
+      begin
+        label11.Text:='Mega'
+   end
+   else if label11.Text='00000000' then
+      begin
+        label11.Text:='Mega';
+   end;   }
+   //primeiraParte1:= label11.text;
+    if (ComboBox3.ItemIndex=6) then
+       begin
+          if ((length(label11.text))=0) then
+            begin
+              primeiraParte1:=label8.text+label9.text+label10.text+label11.text;
+        //timer1.Enabled:=false;
+            end;
+          if ((length(label11.text))=1) then
+          begin
+              primeiraParte1:=label8.text+'Kilo'+label9.text+label10.text;
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label11.text))=2) then
+          begin
+              primeiraParte1:=label8.text+label9.text+'Kilo'+label10.text;
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label11.text))=3) then
+          begin
+              primeiraParte1:=label8.text+label9.text+label10.text+'Kilo';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label11.text))=4) then
+          begin
+              primeiraParte1:=label8.text+'Mega'+label9.text+label10.text;
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label11.text))=5) then
+          begin
+              primeiraParte1:=label8.text+label9.text+'Mega'+label10.text;
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label11.text))=6) then
+          begin
+              primeiraParte1:=label8.text+label9.text+label10.text+'Mega';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label11.text))=7) then
+          begin
+              primeiraParte1:=label8.text+'Giga'+label9.text+label10.text;
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label11.text))=8) then
+          begin
+              primeiraParte1:=label8.text+label9.text+'Giga'+label10.text;
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label11.text))=9) then
+          begin
+              primeiraParte1:=label8.text+label9.text+label10.text+'Giga';
+              //timer1.Enabled:=false;
+          end;
+
+        end
+      else
+        begin
+          if ((length(label11.text))=0) then
+            begin
+              primeiraParte1:=label9.text+label11.text+'';
+        //timer1.Enabled:=false;
+            end;
+          if ((length(label11.text))=1) then
+          begin
+              primeiraParte1:=label8.text+','+label9.text+label10.text+label11.text+'Kilo';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label11.text))=2) then
+          begin
+              primeiraParte1:=label8.text+label9.text+','+label10.text+label11.text+'Kilo';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label11.text))=3) then
+          begin
+              primeiraParte1:=label8.text+label9.text+label10.text+'Kilo';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label11.text))=4) then
+          begin
+              primeiraParte1:=label8.text+'Mega'+label9.text+label10.text;
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label11.text))=5) then
+          begin
+              primeiraParte1:=label8.text+label9.text+'Mega'+label10.text;
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label11.text))=6) then
+          begin
+              primeiraParte1:=label8.text+label9.text+label10.text+'Mega';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label11.text))=7) then
+          begin
+              primeiraParte1:=label8.text+'Giga'+label9.text+label10.text;
+              //timer1.Enabled:=false;
+          end;
+          {if ((length(label9.text))=8) then
+          begin
+              primeiraParte0:='00Mega';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label9.text))=9) then
+          begin
+              primeiraParte0:='000Mega';
+              //timer1.Enabled:=false;
+          end; }
+
+
+
+    end;
+
+
+     edit6.text:=primeiraParte1+'Ohms'+'    '+label12.text+'tol';
+   {if ((length(label11.text))=0) then
+    begin
+        primeiraParte1:='';
+        //timer1.Enabled:=false;
+    end;
+    if ((length(label11.text))=1) then
+    begin
+        primeiraParte1:='0';
+        //timer1.Enabled:=false;
+    end;
+    if ((length(label11.text))=2) then
+    begin
+        primeiraParte1:='00';
+        //timer1.Enabled:=false;
+    end;
+   if (length(label11.text))=3 then
+    begin
+        primeiraParte1:='Kilo';
+        //timer1.Enabled:=false;
+    end;
+   if (length(label11.text))=4 then
+    begin
+        primeiraParte1:='0Kilo';
+        //timer1.Enabled:=false;
+    end;
+    if (length(label11.text))=5 then
+    begin
+        primeiraParte1:='00Kilo';
+        //timer1.Enabled:=false;
+    end;
+    if (length(label11.text))=6 then
+    begin
+        primeiraParte1:='Mega';
+        //timer1.Enabled:=false;
+    end;
+    if (length(label11.text))=7 then
+    begin
+        primeiraParte1:='0Mega';
+        //timer1.Enabled:=false;
+    end;
+    if (length(label11.text))=8 then
+    begin
+        primeiraParte1:='00Mega';
+        //timer1.Enabled:=false;
+    end;
+    if (length(label11.text))=9 then
+    begin
+        primeiraParte1:='000Mega';
+        //timer1.Enabled:=false;
+    end;
+      }
+
+
+    end;
+
+
+
+
+end.

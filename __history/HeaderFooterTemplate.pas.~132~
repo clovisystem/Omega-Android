@@ -1,0 +1,1217 @@
+unit HeaderFooterTemplate;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Graphics, FMX.Edit, FMX.StdCtrls, FMX.ListBox, FMX.Objects,
+  FMX.Controls.Presentation, FMX.Layouts, FMX.Controls, FMX.ExtCtrls, FMX.Forms, FMX.Dialogs,
+  FMX.Colors, FMX.Ani;
+
+type
+  TForm1 = class(TForm)
+    Header: TToolBar;
+    Footer: TToolBar;
+    HeaderLabel: TLabel;
+    {RadioButton1: TRadioButton;
+    RadioButton2: TRadioButton; }
+    Label1: TLabel;
+    Timer1: TTimer;
+    Button1: TButton;
+    Button2: TButton;
+    ImageViewer1: TImageViewer;
+    ImageViewer2: TImageViewer;
+    Label2: TLabel;
+    Edit1: TEdit;
+    ComboBox1: TComboBox;
+    circle1: TCircle;
+    circle2: TCircle;
+    circle3: TCircle;
+    circle4: TCircle;
+    Brush1: TBrushObject;
+    Label3: TLabel;
+    VertScrollBox1: TVertScrollBox;
+
+
+    {procedure RadioButton1Change(Sender: TObject);
+    procedure RadioButton2Change(Sender: TObject); }
+    procedure Timer1Timer(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Edit1Typing(Sender: TObject);
+    procedure ComboBox1Change(Sender: TObject);
+    procedure FormVirtualKeyboardHidden(Sender: TObject;
+      KeyboardVisible: Boolean; const Bounds: TRect);
+    //procedure FormVirtualKeyboardShown(Sender: TObject;
+    //  KeyboardVisible: Boolean; const Bounds: TRect);
+    procedure Edit1Enter(Sender: TObject);
+    procedure FormHide(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+
+
+
+
+  private
+    { Private declarations }
+    Foco: TControl;
+    FocoButton1: TControl;
+    FocoButton2: TControl;
+    FocoCircle: TControl;
+    FocoImageViewer: TControl;
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  FTecladoShow  : boolean;
+implementation
+
+{$R *.fmx}
+{$R *.LgXhdpiTb.fmx ANDROID}
+{$R *.LgXhdpiPh.fmx ANDROID}
+{$R *.NmXhdpiPh.fmx ANDROID}
+{$R *.XLgXhdpiTb.fmx ANDROID}
+{$R *.Moto360.fmx ANDROID}
+
+uses Unit2, Unit3;
+
+
+
+
+procedure AjustarScroll();
+var
+  x:integer;
+begin
+  with form1 do
+  begin
+    VertScrollBox1.Margins.Bottom:=250;
+    VertScrollBox1.ViewportPosition:=PointF(VertScrollBox1.ViewPortPosition.X, TControl(FocoCircle).Position.y + 180);
+
+  end;
+end;
+
+
+procedure  TForm1.Edit1Enter(Sender: TObject);
+begin
+    Foco:=TControl(Edit1);
+    FocoButton1:=TControl(Button1);
+    FocoButton2:=TControl(Button2);
+    FocoCircle:=TControl(Circle1);
+    //VertScrollBox1.ViewportPosition:=PointF(VertScrollBox1.ViewPortPosition.X, TControl(FocoCircle).Position.Y + 180);
+    FocoImageViewer:=TControl(ImageViewer2);
+    //VertScrollBox1.ViewportPosition:=PointF(VertScrollBox1.ViewPortPosition.X, TControl(FocoImageViewer).Position.Y - 260);
+    AjustarScroll();
+end;
+
+
+procedure TForm1.FormVirtualKeyboardHidden(Sender: TObject;
+  KeyboardVisible: Boolean; const Bounds: TRect);
+begin
+     {FTecladoShow := false;
+
+     if not KeyboardVisible then
+        AnimateFloat('Padding.Top', 0, 0.1); }
+
+     VertScrollBox1.Margins.Bottom:=0;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+    if Form2=nil then
+    Form2:=TForm2.Create(Self);
+    Form2.Show;
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+    if Form3=nil then
+    Form3:=TForm3.Create(Self);
+    Form3.Show;
+end;
+
+
+
+
+
+procedure TForm1.ComboBox1Change(Sender: TObject);
+var
+    circleBlack:TAlphaColor;
+begin
+    circleBlack:=circle3.Fill.Color;
+    if combobox1.ItemIndex = 0  then
+    begin
+         circle4.Visible:=false;
+    end;
+
+    if combobox1.ItemIndex = 1  then
+    begin
+         circle4.Visible:=true;
+         circle4.Fill.Color:=TAlphaColorRec.orange;
+
+        if circleBlack = TAlphaColorRec.black then
+        begin
+            circle4.Fill.color:=talphacolorrec.yellow;
+            circle3.Fill.Color:=TAlphaColorRec.Null;
+        end;
+    end;
+
+    if combobox1.ItemIndex = 2  then
+    begin
+         circle4.Visible:=true;
+         circle4.Fill.Color:=TAlphaColorRec.blue;
+        if circleBlack = TAlphaColorRec.black  then
+        begin
+            circle4.Fill.color:=talphacolorrec.purple;
+            circle3.Fill.Color:=TAlphaColorRec.Null;
+        end
+        else if circleBlack = TAlphaColorRec.Null  then
+        begin
+            circle4.Fill.color:=talphacolorrec.purple;
+            circle3.Fill.Color:=TAlphaColorRec.Null;
+        end;
+    end;
+end;
+
+
+
+procedure TForm1.Edit1Typing(Sender: TObject);
+var
+    tamanho:integer;
+    valor:string;
+    faixas, faixas1, faixas2:string;
+begin
+    valor := edit1.Text;
+    tamanho := length(edit1.Text);
+    //if combobox1.ItemIndex = 0  then
+      if tamanho = 2 then
+      begin
+          faixas := valor.Substring(0,1);
+          faixas1 := valor.Substring(1,1);
+          if faixas1 = '0' then
+          begin
+              circle2.visible:=true;
+              circle2.fill.color:=TAlphaColorRec.Black;
+              //circle2.enabled:=false;
+              //label3.text:=faixas1;
+          end;                   // circle1.fill.Color:=TAlphaColorRec.Green;
+          if faixas = '1' then
+          begin
+              circle1.visible:=true;
+              circle1.Fill.color:=TAlphaColorRec.Maroon;
+              //circle1.enabled:=false;
+          end;
+          if faixas1 = '1' then
+          begin
+              circle2.visible:=true;
+              circle2.fill.color:=TAlphaColorRec.maroon;
+              //circle2.enabled:=false;
+          end;
+
+          if faixas = '2' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.red;
+              //circle1.enabled:=false;
+          end;
+
+          if faixas1 = '2' then
+          begin
+              circle2.visible:=true;
+              circle2.fill.Color:=TAlphaColorRec.red;
+              //circle2.enabled:=false;
+          end;
+
+          if faixas = '3' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.orange;
+              //circle1.enabled:=false;
+          end;
+
+          if faixas1 = '3' then
+          begin
+              circle2.visible:=true;
+              circle2.fill.Color:=TAlphaColorRec.orange;
+              //circle2.enabled:=false;
+          end;
+
+          if faixas = '4' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.yellow;
+              //circle1.enabled:=false;
+          end;
+
+          if faixas1 = '4' then
+          begin
+              circle2.visible:=true;
+              circle2.fill.Color:=TAlphaColorRec.yellow;
+              //circle2.enabled:=false;
+          end;
+
+          if faixas = '5' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.green;
+              //circle1.enabled:=false;
+          end;
+
+          if faixas1 = '5' then
+          begin
+              circle2.visible:=true;
+              circle2.fill.Color:=TAlphaColorRec.green;
+              //circle2.enabled:=false;
+          end;
+
+
+          if faixas = '6' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.blue;
+              //circle1.enabled:=false;
+          end;
+
+          if faixas1 = '6' then
+          begin
+              circle2.visible:=true;
+              circle2.fill.Color:=TAlphaColorRec.blue;
+              //circle2.enabled:=false;
+          end;
+
+
+          if faixas = '7' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.purple;
+              //circle1.enabled:=false;
+          end;
+
+          if faixas1 = '7' then
+          begin
+              circle2.visible:=true;
+              circle2.fill.Color:=TAlphaColorRec.purple;
+              circle2.enabled:=false;
+          end;
+
+
+          if faixas = '8' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.gray;
+              //circle1.enabled:=false;
+          end;
+
+          if faixas1 = '8' then
+          begin
+              circle2.visible:=true;
+              circle2.fill.Color:=TAlphaColorRec.gray;
+              //circle2.enabled:=false;
+          end;
+
+
+          if faixas = '9' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.white;
+              //circle1.enabled:=false;
+          end;
+          if faixas1 = '9' then
+          begin
+              circle2.visible:=true;
+              circle2.fill.Color:=TAlphaColorRec.white;
+              //circle2.enabled:=false;
+          end;
+    end
+
+      else if tamanho = 3 then
+      begin
+          faixas := valor.Substring(0,1);
+          faixas1 := valor.Substring(1,1);
+          faixas2 := valor.Substring(2,1);
+          //label3.Text:=faixas2;
+          if faixas2 = '0' then
+          begin
+              circle3.visible:=true;
+              circle3.fill.Color:=TAlphaColorRec.black;
+              //circle3.enabled:=false;
+          end;
+
+          if faixas = '1' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.maroon;
+              //circle1.enabled:=false;
+          end;
+          if faixas1 = '1' then
+          begin
+              circle2.visible:=true;
+              circle2.fill.Color:=TAlphaColorRec.maroon;
+              //circle2.enabled:=false;
+          end;
+          if faixas2 = '1' then
+          begin
+              circle3.visible:=true;
+              circle3.fill.Color:=TAlphaColorRec.maroon;
+              //circle3.enabled:=false;
+          end;
+
+          if faixas = '2' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.red;
+              //circle1.enabled:=false;
+          end;
+          if faixas1 = '2' then
+          begin
+              circle2.visible:=true;
+              circle2.fill.Color:=TAlphaColorRec.red;
+              //circle2.enabled:=false;
+          end;
+          if faixas2 = '2' then
+          begin
+              circle3.visible:=true;
+              circle3.fill.Color:=TAlphaColorRec.red;
+              //circle3.enabled:=false;
+          end;
+
+          if faixas = '3' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.orange;
+              //circle1.enabled:=false;
+          end;
+          if faixas1 = '3' then
+          begin
+              circle2.visible:=true;
+              circle2.fill.Color:=TAlphaColorRec.orange;
+              //circle2.enabled:=false;
+          end;
+          if faixas2 = '3' then
+          begin
+              circle3.visible:=true;
+              circle3.fill.Color:=TAlphaColorRec.orange;
+              //circle3.enabled:=false;
+          end;
+
+          if faixas = '4' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.yellow;
+              //circle1.enabled:=false;
+          end;
+          if faixas1 = '4' then
+          begin
+              circle2.visible:=true;
+              circle2.fill.Color:=TAlphaColorRec.yellow;
+              //circle2.enabled:=false;
+          end;
+          if faixas2 = '4' then
+          begin
+              circle3.visible:=true;
+              circle3.fill.Color:=TAlphaColorRec.yellow;
+              //circle3.enabled:=false;
+          end;
+
+          if faixas = '5' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.green;
+              //circle1.enabled:=false;
+          end;
+          if faixas1 = '5' then
+          begin
+              circle2.visible:=true;
+              circle2.fill.Color:=TAlphaColorRec.green;
+              //circle2.enabled:=false;
+          end;
+          if faixas2 = '5' then
+          begin
+              circle3.visible:=true;
+              circle3.fill.Color:=TAlphaColorRec.green;
+              //circle3.enabled:=false;
+          end;
+
+          if faixas = '6' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.blue;
+              //circle1.enabled:=false;
+          end;
+          if faixas1 = '6' then
+          begin
+              circle2.visible:=true;
+              circle2.fill.Color:=TAlphaColorRec.blue;
+              //circle2.enabled:=false;
+          end;
+          if faixas2 = '6' then
+          begin
+              circle3.visible:=true;
+              circle3.fill.Color:=TAlphaColorRec.blue;
+              //circle3.enabled:=false;
+          end;
+
+          if faixas = '7' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.purple;
+              //circle1.enabled:=false;
+          end;
+          if faixas1 = '7' then
+          begin
+              circle2.visible:=true;
+              circle2.fill.Color:=TAlphaColorRec.purple;
+              //circle2.enabled:=false;
+          end;
+          if faixas2 = '7' then
+          begin
+              circle3.visible:=true;
+              circle3.fill.Color:=TAlphaColorRec.purple;
+              //circle3.enabled:=false;
+          end;
+
+          if faixas = '8' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.grey;
+              //circle1.enabled:=false;
+          end;
+          if faixas1 = '8' then
+          begin
+              circle2.visible:=true;
+              circle2.fill.Color:=TAlphaColorRec.gray;
+              circle2.enabled:=false;
+          end;
+          if faixas2 = '8' then
+          begin
+              circle3.visible:=true;
+              circle3.fill.Color:=TAlphaColorRec.gray;
+              //circle3.enabled:=false;
+          end;
+
+          if faixas = '9' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.white;
+              //circle1.enabled:=false;
+          end;
+          if faixas1 = '9' then
+          begin
+              circle2.visible:=true;
+              circle2.fill.Color:=TAlphaColorRec.white;
+              //circle2.enabled:=false;
+          end;
+          if faixas2 = '9' then
+          begin
+              circle3.visible:=true;
+              circle3.fill.Color:=TAlphaColorRec.white
+              //circle3.enabled:=false;
+          end;
+      end;
+
+    //if combobox1.ItemIndex = 1  then
+      //circle4.fill.Color:=2551650;
+      if tamanho = 1 then
+      begin
+          faixas := valor.Substring(0);
+          //faixas1 := valor.Substring(1);
+          {if faixas1 = '0' then
+              circle3.visible:=true;
+              circle3.Color:=7;
+              circle3.enabled:=false;}
+
+          if faixas = '1' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.maroon;
+              //circle1.enabled:=false;
+          end;
+          {if faixas1 = '1' then
+              circle2.visible:=true;
+              circle2.Color:=11;
+              circle2.enabled:=false;}
+
+          if faixas = '2' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.red;
+              //circle1.enabled:=false;
+          end;
+          {if faixas1 = '2' then
+              circle2.visible:=true;
+              circle2.Color:=32;
+              circle2.enabled:=false; }
+
+          if faixas = '3' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.orange;
+              //circle1.enabled:=false;
+          end;
+          {if faixas1 = '3' then
+              circle2.visible:=true;
+              circle2.Color:=30;
+              circle2.enabled:=false; }
+
+          if faixas = '4' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.yellow;
+              //circle1.enabled:=false;
+          end;
+          {if faixas1 = '4' then
+              circle2.visible:=true;
+              circle2.Color:=51;
+              circle2.enabled:=false; }
+
+          if faixas = '5' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.green;
+              //circle1.enabled:=false;
+          end;
+          {if faixas1 = '5' then
+              circle2.visible:=true;
+              circle2.Color:=25;
+              circle2.enabled:=false; }
+
+          if faixas = '6' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.blue;
+              //circle1.enabled:=false;
+          end;
+          {if faixas1 = '6' then
+              circle2.visible:=true;
+              circle2.Color:=9;
+              circle2.enabled:=false;}
+
+          if faixas = '7' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.purple;
+              //circle1.enabled:=false;
+          end;
+          {if faixas1 = '7' then
+              circle2.visible:=true;
+              circle2.Color:=28;
+              circle2.enabled:=false; }
+
+          if faixas = '8' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.grey;
+              //circle1.enabled:=false;
+          end;
+          {if faixas1 = '8' then
+              circle2.visible:=true;
+              circle2.Color:=26;
+              circle2.enabled:=false; }
+
+          if faixas = '9' then
+          begin
+              circle1.visible:=true;
+              circle1.fill.Color:=TAlphaColorRec.white;
+              //circle1.enabled:=false;
+          end;
+          {if faixas1 = '9' then
+              circle2.visible:=true;
+              circle2.Color:=50;
+              circle2.enabled:=false;}
+        end;
+      {if tamanho = 2 then
+          faixas := valor.Substring(0);
+          faixas1 := valor.Substring(1);
+          if faixas1 = '0' then
+              circle3.visible:=true;
+              circle3.fill.Color:=000;
+              circle3.enabled:=false;
+
+          if faixas = '1' then
+              circle1.visible:=true;
+              circle1.fill.Color:=12800;
+              circle1.enabled:=false;
+          if faixas1 = '1' then
+              circle2.visible:=true;
+              circle2.fill.Color:=12800;
+              circle2.enabled:=false;
+
+          if faixas = '2' then
+              circle1.visible:=true;
+              circle1.fill.Color:=25500;
+              circle1.enabled:=false;
+          if faixas1 = '2' then
+              circle2.visible:=true;
+              circle2.fill.Color:=25500;
+              circle2.enabled:=false;
+
+          if faixas = '3' then
+              circle1.visible:=true;
+              circle1.fill.Color:=2551650;
+              circle1.enabled:=false;
+          if faixas1 = '3' then
+              circle2.visible:=true;
+              circle2.fill.Color:=2551650;
+              circle2.enabled:=false;
+
+          if faixas = '4' then
+              circle1.visible:=true;
+              circle1.fill.Color:=2552550;
+              circle1.enabled:=false;
+          if faixas1 = '4' then
+              circle2.visible:=true;
+              circle2.fill.Color:=2552550;
+              circle2.enabled:=false;
+
+          if faixas = '5' then
+              circle1.visible:=true;
+              circle1.fill.Color:=01280;
+              circle1.enabled:=false;
+          if faixas1 = '5' then
+              circle2.visible:=true;
+              circle2.fill.Color:=01280;
+              circle2.enabled:=false;
+
+          if faixas = '6' then
+              circle1.visible:=true;
+              circle1.fill.Color:=00255;
+              circle1.enabled:=false;
+          if faixas1 = '6' then
+              circle2.visible:=true;
+              circle2.fill.Color:=00255;
+              circle2.enabled:=false;
+
+          if faixas = '7' then
+              circle1.visible:=true;
+              circle1.fill.Color:=1280128;
+              circle1.enabled:=false;
+          if faixas1 = '7' then
+              circle2.visible:=true;
+              circle2.fill.Color:=1280128;
+              circle2.enabled:=false;
+
+          if faixas = '8' then
+              circle1.visible:=true;
+              circle1.fill.Color:=128128128;
+              circle1.enabled:=false;
+          if faixas1 = '8' then
+              circle2.visible:=true;
+              circle2.fill.Color:=128128128;
+              circle2.enabled:=false;
+
+          if faixas = '9' then
+              circle1.visible:=true;
+              circle1.fill.Color:=255255255;
+              circle1.enabled:=false;
+          if faixas1 = '9' then
+              circle2.visible:=true;
+              circle2.fill.Color:=255255255;
+              circle2.enabled:=false;
+
+      if tamanho = 3 then
+          faixas := valor.Substring(0);
+          faixas1 := valor.Substring(1);
+          faixas2 := valor.Substring(2);
+          if faixas2 = '0' then
+              circle3.visible:=true;
+              circle3.fill.Color:=000;
+              circle3.enabled:=false;
+
+          if faixas = '1' then
+              circle1.visible:=true;
+              circle1.fill.Color:=12800;
+              circle1.enabled:=false;
+          if faixas1 = '1' then
+              circle2.visible:=true;
+              circle2.fill.Color:=12800;
+              circle2.enabled:=false;
+          if faixas2 = '1' then
+              circle3.visible:=true;
+              circle3.fill.Color:=12800;
+              circle3.enabled:=false;
+
+          if faixas = '2' then
+              circle1.visible:=true;
+              circle1.fill.Color:=25500;
+              circle1.enabled:=false;
+          if faixas1 = '2' then
+              circle2.visible:=true;
+              circle2.fill.Color:=25500;
+              circle2.enabled:=false;
+          if faixas2 = '2' then
+              circle3.visible:=true;
+              circle3.fill.Color:=25500;
+              circle3.enabled:=false;
+
+          if faixas = '3' then
+              circle1.visible:=true;
+              circle1.fill.Color:=2551650;
+              circle1.enabled:=false;
+          if faixas1 = '3' then
+              circle2.visible:=true;
+              circle2.fill.Color:=2551650;
+              circle2.enabled:=false;
+          if faixas2 = '3' then
+              circle3.visible:=true;
+              circle3.fill.Color:=2551650;
+              circle3.enabled:=false;
+
+          if faixas = '4' then
+              circle1.visible:=true;
+              circle1.fill.Color:=2552550;
+              circle1.enabled:=false;
+          if faixas1 = '4' then
+              circle2.visible:=true;
+              circle2.fill.Color:=2552550;
+              circle2.enabled:=false;
+          if faixas2 = '4' then
+              circle3.visible:=true;
+              circle3.fill.Color:=2552550;
+              circle3.enabled:=false;
+
+          if faixas = '5' then
+              circle1.visible:=true;
+              circle1.fill.Color:=01280;
+              circle1.enabled:=false;
+          if faixas1 = '5' then
+              circle2.visible:=true;
+              circle2.fill.Color:=01280;
+              circle2.enabled:=false;
+          if faixas2 = '5' then
+              circle3.visible:=true;
+              circle3.fill.Color:=01280;
+              circle3.enabled:=false;
+
+          if faixas = '6' then
+              circle1.visible:=true;
+              circle1.fill.Color:=00255;
+              circle1.enabled:=false;
+          if faixas1 = '6' then
+              circle2.visible:=true;
+              circle2.fill.Color:=00255;
+              circle2.enabled:=false;
+          if faixas2 = '6' then
+              circle3.visible:=true;
+              circle3.fill.Color:=00255;
+              circle3.enabled:=false;
+
+          if faixas = '7' then
+              circle1.visible:=true;
+              circle1.fill.Color:=1280128;
+              circle1.enabled:=false;
+          if faixas1 = '7' then
+              circle2.visible:=true;
+              circle2.fill.Color:=1280128;
+              circle2.enabled:=false;
+          if faixas2 = '7' then
+              circle3.visible:=true;
+              circle3.fill.Color:=1280128;
+              circle3.enabled:=false;
+
+          if faixas = '8' then
+              circle1.visible:=true;
+              circle1.fill.Color:=128128128;
+              circle1.enabled:=false;
+          if faixas1 = '8' then
+              circle2.visible:=true;
+              circle2.fill.Color:=128128128;
+              circle2.enabled:=false;
+          if faixas2 = '8' then
+              circle3.visible:=true;
+              circle3.fill.Color:=128128128;
+              circle3.enabled:=false;
+
+          if faixas = '9' then
+              circle1.visible:=true;
+              circle1.fill.Color:=255255255;
+              circle1.enabled:=false;
+          if faixas1 = '9' then
+              circle2.visible:=true;
+              circle2.fill.Color:=255255255;
+              circle2.enabled:=false;
+          if faixas2 = '9' then
+              circle3.visible:=true;
+              circle3.fill.Color:=255255255;
+              circle3.enabled:=false;
+
+
+    //if combobox1.ItemIndex = 2  then
+      //circle4.fill.Color:=00255;
+      if tamanho = 1 then
+          faixas := valor.Substring(0);
+          //faixas1 := valor.Substring(1);
+          if faixas1 = '0' then
+              circle3.visible:=true;
+              circle3.fill.Color:=000;
+              circle3.enabled:=false;
+
+          if faixas = '1' then
+              circle1.visible:=true;
+              circle1.fill.Color:=12800;
+              circle1.enabled:=false;
+          {if faixas1 = '1' then
+              circle2.visible:=true;
+              circle2.Color:=11;
+              circle2.enabled:=false;}
+
+          {if faixas = '2' then
+              circle1.visible:=true;
+              circle1.fill.Color:=25500;
+              circle1.enabled:=false;
+          {if faixas1 = '2' then
+              circle2.visible:=true;
+              circle2.Color:=32;
+              circle2.enabled:=false; }
+
+          {if faixas = '3' then
+              circle1.visible:=true;
+              circle1.fill.Color:=2551650;
+              circle1.enabled:=false;
+          {if faixas1 = '3' then
+              circle2.visible:=true;
+              circle2.Color:=30;
+              circle2.enabled:=false; }
+
+          {if faixas = '4' then
+              circle1.visible:=true;
+              circle1.fill.Color:=2552550;
+              circle1.enabled:=false;
+          {if faixas1 = '4' then
+              circle2.visible:=true;
+              circle2.Color:=51;
+              circle2.enabled:=false; }
+
+          {if faixas = '5' then
+              circle1.visible:=true;
+              circle1.fill.Color:=01280;
+              circle1.enabled:=false;
+          {if faixas1 = '5' then
+              circle2.visible:=true;
+              circle2.Color:=25;
+              circle2.enabled:=false; }
+
+          {if faixas = '6' then
+              circle1.visible:=true;
+              circle1.fill.Color:=00255;
+              circle1.enabled:=false;
+          {if faixas1 = '6' then
+              circle2.visible:=true;
+              circle2.Color:=9;
+              circle2.enabled:=false;}
+
+          {if faixas = '7' then
+              circle1.visible:=true;
+              circle1.fill.Color:=1280128;
+              circle1.enabled:=false;
+          {if faixas1 = '7' then
+              circle2.visible:=true;
+              circle2.Color:=28;
+              circle2.enabled:=false; }
+
+          {if faixas = '8' then
+              circle1.visible:=true;
+              circle1.fill.Color:=128128128;
+              circle1.enabled:=false;
+          {if faixas1 = '8' then
+              circle2.visible:=true;
+              circle2.Color:=26;
+              circle2.enabled:=false; }
+
+          {if faixas = '9' then
+              circle1.visible:=true;
+              circle1.fill.Color:=255255255;
+              circle1.enabled:=false;
+          {if faixas1 = '9' then
+              circle2.visible:=true;
+              circle2.Color:=50;
+              circle2.enabled:=false;}
+
+      {if tamanho = 2 then
+          faixas := valor.Substring(0);
+          faixas1 := valor.Substring(1);
+          if faixas1 = '0' then
+              circle3.visible:=true;
+              circle3.fill.Color:=000;
+              circle3.enabled:=false;
+
+          if faixas = '1' then
+              circle1.visible:=true;
+              circle1.fill.Color:=12800;
+              circle1.enabled:=false;
+          if faixas1 = '1' then
+              circle2.visible:=true;
+              circle2.fill.Color:=12800;
+              circle2.enabled:=false;
+
+          if faixas = '2' then
+              circle1.visible:=true;
+              circle1.fill.Color:=25500;
+              circle1.enabled:=false;
+          if faixas1 = '2' then
+              circle2.visible:=true;
+              circle2.fill.Color:=25500;
+              circle2.enabled:=false;
+
+          if faixas = '3' then
+              circle1.visible:=true;
+              circle1.fill.Color:=2551650;
+              circle1.enabled:=false;
+          if faixas1 = '3' then
+              circle2.visible:=true;
+              circle2.fill.Color:=2551650;
+              circle2.enabled:=false;
+
+          if faixas = '4' then
+              circle1.visible:=true;
+              circle1.fill.Color:=2552550;
+              circle1.enabled:=false;
+          if faixas1 = '4' then
+              circle2.visible:=true;
+              circle2.fill.Color:=2552550;
+              circle2.enabled:=false;
+
+          if faixas = '5' then
+              circle1.visible:=true;
+              circle1.fill.Color:=01280;
+              circle1.enabled:=false;
+          if faixas1 = '5' then
+              circle2.visible:=true;
+              circle2.fill.Color:=01280;
+              circle2.enabled:=false;
+
+          if faixas = '6' then
+              circle1.visible:=true;
+              circle1.fill.Color:=00255;
+              circle1.enabled:=false;
+          if faixas1 = '6' then
+              circle2.visible:=true;
+              circle2.fill.Color:=00255;
+              circle2.enabled:=false;
+
+          if faixas = '7' then
+              circle1.visible:=true;
+              circle1.fill.Color:=1280128;
+              circle1.enabled:=false;
+          if faixas1 = '7' then
+              circle2.visible:=true;
+              circle2.fill.Color:=1280128;
+              circle2.enabled:=false;
+
+          if faixas = '8' then
+              circle1.visible:=true;
+              circle1.fill.Color:=128128128;
+              circle1.enabled:=false;
+          if faixas1 = '8' then
+              circle2.visible:=true;
+              circle2.fill.Color:=128128128;
+              circle2.enabled:=false;
+
+          if faixas = '9' then
+              circle1.visible:=true;
+              circle1.fill.Color:=255255255;
+              circle1.enabled:=false;
+          if faixas1 = '9' then
+              circle2.visible:=true;
+              circle2.fill.Color:=255255255;
+              circle2.enabled:=false;
+
+      if tamanho = 3 then
+          faixas := valor.Substring(0);
+          faixas1 := valor.Substring(1);
+          faixas2 := valor.Substring(2);
+          if faixas2 = '0' then
+              circle3.visible:=true;
+              circle3.fill.Color:=000;
+              circle3.enabled:=false;
+
+          if faixas = '1' then
+              circle1.visible:=true;
+              circle1.fill.Color:=12800;
+              circle1.enabled:=false;
+          if faixas1 = '1' then
+              circle2.visible:=true;
+              circle2.fill.Color:=12800;
+              circle2.enabled:=false;
+          if faixas2 = '1' then
+              circle3.visible:=true;
+              circle3.fill.Color:=12800;
+              circle3.enabled:=false;
+
+          if faixas = '2' then
+              circle1.visible:=true;
+              circle1.fill.Color:=25500;
+              circle1.enabled:=false;
+          if faixas1 = '2' then
+              circle2.visible:=true;
+              circle2.fill.Color:=25500;
+              circle2.enabled:=false;
+          if faixas2 = '2' then
+              circle3.visible:=true;
+              circle3.fill.Color:=25500;
+              circle3.enabled:=false;
+
+          if faixas = '3' then
+              circle1.visible:=true;
+              circle1.fill.Color:=2551650;
+              circle1.enabled:=false;
+          if faixas1 = '3' then
+              circle2.visible:=true;
+              circle2.fill.Color:=2551650;
+              circle2.enabled:=false;
+          if faixas2 = '3' then
+              circle3.visible:=true;
+              circle3.fill.Color:=2551650;
+              circle3.enabled:=false;
+
+          if faixas = '4' then
+              circle1.visible:=true;
+              circle1.fill.Color:=2552550;
+              circle1.enabled:=false;
+          if faixas1 = '4' then
+              circle2.visible:=true;
+              circle2.fill.Color:=2552550;
+              circle2.enabled:=false;
+          if faixas2 = '4' then
+              circle3.visible:=true;
+              circle3.fill.Color:=2552550;
+              circle3.enabled:=false;
+
+          if faixas = '5' then
+              circle1.visible:=true;
+              circle1.fill.Color:=01280;
+              circle1.enabled:=false;
+          if faixas1 = '5' then
+              circle2.visible:=true;
+              circle2.fill.Color:=01280;
+              circle2.enabled:=false;
+          if faixas2 = '5' then
+              circle3.visible:=true;
+              circle3.fill.Color:=01280;
+              circle3.enabled:=false;
+
+          if faixas = '6' then
+              circle1.visible:=true;
+              circle1.fill.Color:=00255;
+              circle1.enabled:=false;
+          if faixas1 = '6' then
+              circle2.visible:=true;
+              circle2.fill.Color:=00255;
+              circle2.enabled:=false;
+          if faixas2 = '6' then
+              circle3.visible:=true;
+              circle3.fill.Color:=00255;
+              circle3.enabled:=false;
+
+          if faixas = '7' then
+              circle1.visible:=true;
+              circle1.fill.Color:=1280128;
+              circle1.enabled:=false;
+          if faixas1 = '7' then
+              circle2.visible:=true;
+              circle2.fill.Color:=1280128;
+              circle2.enabled:=false;
+          if faixas2 = '7' then
+              circle3.visible:=true;
+              circle3.fill.Color:=1280128;
+              circle3.enabled:=false;
+
+          if faixas = '8' then
+              circle1.visible:=true;
+              circle1.fill.Color:=128128128;
+              circle1.enabled:=false;
+          if faixas1 = '8' then
+              circle2.visible:=true;
+              circle2.fill.Color:=128128128;
+              circle2.enabled:=false;
+          if faixas2 = '8' then
+              circle3.visible:=true;
+              circle3.fill.Color:=128128128;
+              circle3.enabled:=false;
+
+          if faixas = '9' then
+              circle1.visible:=true;
+              circle1.fill.Color:=255255255;
+              circle1.enabled:=false;
+          if faixas1 = '9' then
+              circle2.visible:=true;
+              circle2.fill.Color:=255255255;
+              circle2.enabled:=false;
+          if faixas2 = '9' then
+              circle3.visible:=true;
+              circle3.fill.Color:=255255255;
+              circle3.enabled:=false; }
+
+end;
+
+procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Application.Terminate();
+end;
+
+procedure TForm1.FormHide(Sender: TObject);
+begin
+  Application.Terminate();
+end;
+
+procedure TForm1.FormShow(Sender: TObject);
+begin
+    circle1.Visible:=false;
+
+
+    circle2.Visible:=false;
+    circle3.Visible:=false;
+    circle4.Visible:=false;
+    ComboBox1.ListBox.ListItems[0].TextSettings.FontColor := TAlphaColorRec.Paleturquoise;
+
+  //ImageViewer1.BackgroundFill:=talpharec.blue;
+end;
+
+
+
+{procedure TForm1.FormVirtualKeyboardShown(Sender: TObject;
+  KeyboardVisible: Boolean; const Bounds: TRect);
+var
+     O: TFMXObject;
+begin
+     FTecladoShow := true;
+
+     if Assigned(Focused) and (Focused.GetObject is TControl) then
+        if TControl(Focused).AbsoluteRect.Bottom - Padding.Top >= (Bounds.Top - Height) then
+        begin
+             //If switching between controls, the KeyboardHidden animation will run first
+             //and we'll see the form scroll up and then down.
+             //Calling StopPropertyAnimation jumps the first animation to it's final value - same problem
+             //Instead we need to search for the other animation and call StopAtCurrent.
+             for O in Children do
+                 if (O is TFloatAnimation) and (TFloatAnimation(O).PropertyName = 'Padding.Top') then
+                    TFloatAnimation(O).StopAtCurrent;
+
+             AnimateFloat('Padding.Top',Bounds.Top - Height - TControl(Focused).AbsoluteRect.Bottom + Padding.Top, 0.1)
+        end
+        else
+     else
+        AnimateFloat('Padding.Top', 0, 0.1);
+end; }
+
+
+{procedure TForm1.RadioButton1Change(Sender: TObject);
+begin
+    if Form2=nil then
+    Form2:=TForm2.Create(Self);
+    Form2.Show;
+end;
+
+procedure TForm1.RadioButton2Change(Sender: TObject);
+begin
+    if Form3=nil then
+    Form3:=TForm3.Create(Self);
+    Form3.Show;
+end; }
+
+procedure TForm1.Timer1Timer(Sender: TObject);
+begin
+    ImageViewer1.visible:=false;
+end;
+
+end.

@@ -1,0 +1,768 @@
+unit Unit2;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Edit, FMX.Controls.Presentation, FMX.Colors, FMX.ListBox;
+
+type
+  TForm2 = class(TForm)
+    Label1: TLabel;
+    Timer1: TTimer;
+    Timer2: TTimer;
+    Label7: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label10: TLabel;
+    Timer3: TTimer;
+    Timer4: TTimer;
+    Label6: TLabel;
+    Edit5: TEdit;
+    Button2: TButton;
+    Button1: TButton;
+    HeaderLabel: TLabel;
+    ComboBox1: TComboBox;
+    ComboBox2: TComboBox;
+    ComboBox3: TComboBox;
+    ComboBox4: TComboBox;
+    procedure FormShow(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+
+    procedure Timer2Timer(Sender: TObject);
+    procedure Timer4Timer(Sender: TObject);
+
+
+    procedure ComboBox1Change(Sender: TObject);
+    procedure ComboBox2Change(Sender: TObject);
+    procedure ComboBox3Change(Sender: TObject);
+    procedure ComboBox4Change(Sender: TObject);   
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.fmx}
+
+uses HeaderFooterTemplate;
+
+
+function minusculo(texto: string): string; stdcall;
+const
+maiusculo = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+minusculo = 'qwertyuiopasdfghjklzxcvbnm';
+var
+x: Integer;
+begin
+for x := 1 to Length(texto) do
+if Pos(texto[x], MAIUSCULO) <> 0 then
+texto[x] := MINUSCULO[Pos(texto[x], MAIUSCULO)];
+Result := texto;
+end;
+
+
+
+//foi colocado dois "C's" para funcionar em android
+function removeAcentos(texto:string):string;
+  Const ComAcento = '‡·„‚ËÈÍÌÏÓÚÛıÙ˙˘˚Ácc¿¡√¬»… ÃÕŒ“”’‘Ÿ⁄€«';
+  Const SemAcento = 'aaaaeeeiiioooouuucccAAAAEEEIIIOOOOUUUC';
+  var iFor : Integer;
+begin
+   for iFor := 1 to Length(texto) do begin
+      if Pos(texto[iFor],ComAcento) <> 0 then begin
+         texto[iFor] := SemAcento[Pos(texto[iFor],ComAcento)];
+      end;
+   end;
+   Result := texto;
+end;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+procedure TForm2.Button1Click(Sender: TObject);
+begin
+     Form2:=nil;
+      hide;
+
+      Edit5.Text:='';
+end;
+
+procedure TForm2.Button2Click(Sender: TObject);
+begin
+
+    Edit5.text:='';
+
+    label7.text:='';
+    label8.text:='';
+    label9.text:='';
+    label10.text:='';
+
+    timer4.Enabled:=false;
+
+    Edit5.visible:=false;
+    //Edit6.visible:=false;
+
+    label3.Visible:=false;
+    label4.Visible:=false;
+    label5.Visible:=false;
+    label6.Visible:=false;
+    label7.Visible:=false;
+    label8.Visible:=false;
+    label9.Visible:=false;
+    label10.Visible:=false;
+    //label11.Visible:=false;
+    //label12.Visible:=false;
+end;
+
+procedure TForm2.ComboBox1Change(Sender: TObject);
+
+    begin
+      ComboBox2.Visible:=true;
+
+      label3.Visible:=true;
+
+
+    end;
+
+
+procedure TForm2.ComboBox2Change(Sender: TObject);
+
+    begin
+      ComboBox3.Visible:=true;
+
+      label4.Visible:=true;
+
+
+    end;
+
+
+procedure TForm2.ComboBox3Change(Sender: TObject);
+
+    begin
+      ComboBox4.Visible:=true;
+
+      label5.Visible:=true;
+
+
+    end;
+
+
+procedure TForm2.ComboBox4Change(Sender: TObject);
+begin
+    edit5.Visible:=true;
+end;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{procedure TForm2.Edit4KeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
+  Shift: TShiftState);
+var
+texto4:string;
+begin
+texto4:=Edit4.Text;
+if (texto4 <> 'ouro') or (texto4 <> 'prata') or  (texto4 <>'marrom') or  (texto4 <>'vermelho') or  (texto4 <>'cinza') or  (texto4 <>'preto') then
+ begin
+   Edit4.Text:='Essa cor n„o existe nos cÛdigos'
+
+ end;
+end; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{procedure TForm2.Edit5CanFocus(Sender: TObject; var ACanFocus: Boolean);
+
+var
+texto4:string;
+begin
+texto4:=Edit4.Text;
+//TEXTO4:=EDIT4.TEXT;
+if (texto4 <> 'ouro') or (texto4 <> 'prata') or  (texto4 <>'marrom') or  (texto4 <>'vermelho') or  (texto4 <>'cinza') or  (texto4 <>'preto')or (TEXTO4 <> 'OURO') OR (TEXTO4 <> 'PRATA') OR  (TEXTO4 <>'MARROM') OR  (TEXTO4 <>'VERMELHO') OR  (TEXTO4 <>'CINZA') OR  (TEXTO4 <>'PRETO') then
+ begin
+   Edit4.Text:='Cor n„o disponÌvel no resistor';
+
+ end;
+
+
+ {IF (TEXTO4 <> 'OURO') OR (TEXTO4 <> 'PRATA') OR  (TEXTO4 <>'MARROM') OR  (TEXTO4 <>'VERMELHO') OR  (TEXTO4 <>'CINZA') OR  (TEXTO4 <>'PRETO') THEN
+ BEGIN
+   EDIT4.TEXT:='ESSA COR N√O EXISTE NOS C”DIGOS'
+
+ END;
+
+end; }
+
+procedure TForm2.FormShow(Sender: TObject);
+var
+  yellow:integer;
+begin
+  label3.Visible:=false;
+  label4.Visible:=false;
+  label5.Visible:=false;
+  label6.Visible:=false;
+  label7.Visible:=false;
+  label8.Visible:=false;
+  label9.Visible:=false;
+  label10.Visible:=false;
+  //label11.Visible:=false;
+  //label12.Visible:=false;
+  ComboBox1.Visible:=true;
+  ComboBox2.Visible:=false;
+  ComboBox3.Visible:=false;
+  ComboBox4.Visible:=false;
+
+  Edit5.text:='';
+
+  //edit6.Visible:=false;
+
+  button2.Visible:=false;
+
+
+
+
+
+  end;
+
+procedure TForm2.Timer1Timer(Sender: TObject);
+var
+texto1:string;
+begin
+
+if(ComboBox1.ItemIndex=0)then
+begin
+label7.Visible:=true;
+
+label7.text:='4';
+label7.fontcolor:=talphacolorrec.yellow;
+
+end
+
+
+Else If (ComboBox1.ItemIndex=1)then
+begin
+label7.Visible:=true;
+
+label7.text:='6';
+label7.fontcolor:=talphacolorrec.Blue;
+end
+
+
+Else If (ComboBox1.ItemIndex=2)then
+begin
+label7.Visible:=true;
+
+label7.text:='9';
+label7.fontcolor:=talphacolorrec.White;
+end
+
+
+Else If (ComboBox1.ItemIndex=3)then
+begin
+label7.Visible:=true;
+label7.text:='8';
+label7.fontcolor:=talphacolorrec.lightgray;
+end
+
+
+Else If (ComboBox1.ItemIndex=4)then
+begin
+label7.Visible:=true;
+label7.text:='3';
+label7.fontcolor:=talphacolorrec.Orange;
+end
+
+
+Else If (ComboBox1.ItemIndex=5)then
+begin
+label7.Visible:=true;
+label7.text:='1';
+label7.fontcolor:=talphacolorrec.Maroon;
+end
+
+
+Else If (ComboBox1.ItemIndex=6)then
+begin
+label7.Visible:=true;
+label7.text:=' ';
+label7.fontcolor:=talphacolorrec.Black;
+end
+
+
+Else If (ComboBox1.ItemIndex=7)then
+begin
+label7.Visible:=true;
+label7.text:='7';
+label7.fontcolor:=talphacolorrec.Purple;
+end
+
+
+Else If (ComboBox1.ItemIndex=8)then
+begin
+label7.Visible:=true;
+label7.text:='5';
+label7.fontcolor:=talphacolorrec.Green;
+end
+
+
+Else If (ComboBox1.ItemIndex=9)then
+begin
+label7.Visible:=true;
+label7.text:='2';
+label7.fontcolor:=talphacolorrec.red;
+
+timer1.Enabled:=false;
+end;
+
+
+
+
+
+
+If(ComboBox2.ItemIndex=0)then
+begin
+Label8.Visible:=true;
+
+Label8.text:='4';
+Label8.fontcolor:=talphacolorrec.Yellow;
+
+end
+
+
+Else If(ComboBox2.ItemIndex=1)then
+begin
+Label8.Visible:=true;
+
+Label8.text:='6';
+Label8.fontcolor:=talphacolorrec.Blue;
+end
+
+
+Else If (ComboBox2.ItemIndex=2)then
+begin
+Label8.Visible:=true;
+
+Label8.text:='9';
+Label8.fontcolor:=talphacolorrec.White;
+end
+
+
+Else If(ComboBox2.ItemIndex=3)then
+begin
+Label8.Visible:=true;
+Label8.text:='8';
+Label8.fontcolor:=talphacolorrec.lightgray;
+end
+
+
+Else If(ComboBox2.ItemIndex=4)then
+begin
+Label8.Visible:=true;
+Label8.text:='3';
+Label8.fontcolor:=talphacolorrec.Orange;
+end
+
+
+Else If(ComboBox2.ItemIndex=5)then
+begin
+Label8.Visible:=true;
+Label8.text:='1';
+Label8.fontcolor:=talphacolorrec.Maroon;
+end
+
+
+Else If(ComboBox2.ItemIndex=6)then
+begin
+Label8.Visible:=true;
+Label8.text:=' ';
+Label8.fontcolor:=talphacolorrec.Black;
+end
+
+
+Else If(ComboBox2.ItemIndex=7)then
+begin
+Label8.Visible:=true;
+Label8.text:='7';
+Label8.fontcolor:=talphacolorrec.Purple;
+end
+
+
+Else If(ComboBox2.ItemIndex=8)then
+begin
+Label8.Visible:=true;
+Label8.text:='5';
+Label8.fontcolor:=talphacolorrec.Green;
+end
+
+
+Else If(ComboBox2.ItemIndex=9)then
+begin
+Label8.Visible:=true;
+Label8.text:='2';
+Label8.fontcolor:=talphacolorrec.red;
+end;
+
+
+
+
+
+
+
+If(ComboBox3.ItemIndex=0)then
+begin
+Label9.Visible:=true;
+
+Label9.text:='4';
+Label9.fontcolor:=talphacolorrec.Yellow;
+
+end
+
+
+Else If(ComboBox3.ItemIndex=1)then
+begin
+Label9.Visible:=true;
+
+Label9.text:='6';
+Label9.fontcolor:=talphacolorrec.Blue;
+end
+
+
+Else If (ComboBox3.ItemIndex=2)then
+begin
+Label9.Visible:=true;
+
+Label9.text:='9';
+Label9.fontcolor:=talphacolorrec.White;
+end
+
+
+Else If(ComboBox3.ItemIndex=3)then
+begin
+Label9.Visible:=true;
+Label9.text:='8';
+Label9.fontcolor:=talphacolorrec.lightgray;
+end
+
+
+Else If(ComboBox3.ItemIndex=4)then
+begin
+Label9.Visible:=true;
+Label9.text:='3';
+Label9.fontcolor:=talphacolorrec.Orange;
+end
+
+
+Else If(ComboBox3.ItemIndex=5)then
+begin
+Label9.Visible:=true;
+Label9.text:='1';
+Label9.fontcolor:=talphacolorrec.Maroon;
+end
+
+
+Else If(ComboBox3.ItemIndex=6)then
+begin
+Label9.Visible:=true;
+Label9.text:=' ';
+Label9.fontcolor:=talphacolorrec.Black;
+end
+
+
+Else If(ComboBox3.ItemIndex=7)then
+begin
+Label9.Visible:=true;
+Label9.text:='7';
+Label9.fontcolor:=talphacolorrec.Purple;
+end
+
+
+Else If(ComboBox3.ItemIndex=8)then
+begin
+Label9.Visible:=true;
+Label9.text:='5';
+Label9.fontcolor:=talphacolorrec.Green;
+end
+
+
+Else If(ComboBox3.ItemIndex=9)then
+begin
+Label9.Visible:=true;
+Label9.text:='2';
+Label9.fontcolor:=talphacolorrec.red;
+end;
+
+
+
+
+
+
+
+If(ComboBox4.ItemIndex=2)then
+begin
+label10.Visible:=true;
+label10.text:='1%';
+label10.fontcolor:=talphacolorrec.Maroon;
+end
+Else If(ComboBox4.ItemIndex=3)then
+begin
+label10.Visible:=true;
+label10.text:='2%';
+label10.fontcolor:=talphacolorrec.Red;
+end
+Else If(ComboBox4.ItemIndex=0)then
+begin
+label10.Visible:=true;
+label10.text:='5%';
+label10.fontcolor:=talphacolorrec.Yellow;
+end
+Else If (ComboBox4.ItemIndex=1)then
+begin
+label10.Visible:=true;
+label10.text:='10%';
+label10.fontcolor:=talphacolorrec.Silver;
+end
+
+
+Else If (ComboBox4.ItemIndex=4)then
+begin
+label10.Visible:=true;
+label10.text:='20%';
+label10.fontcolor:=talphacolorrec.lightgray
+end;
+
+timer2.Enabled:=true;
+
+
+end;
+
+
+
+
+
+procedure TForm2.Timer2Timer(Sender: TObject);
+begin
+      Timer4.enabled:=true;
+end;
+
+
+
+procedure TForm2.Timer4Timer(Sender: TObject);
+var
+  primeiraParte0:string;
+{var
+texto4:string; }
+begin
+
+   {if label9.Text='000' then
+      begin
+        label9.Text:='Kilo'
+      end
+   else if label9.Text='000000' then
+      begin
+        label9.Text:='Mega';
+   end; }
+   {else if label9.Text='0000' then
+      begin
+        label9.Text:='Kilo'
+   end
+   else if label9.Text='00000' then
+      begin
+        label9.Text:='Mega';
+   end
+   else if label9.Text='0000000' then
+      begin
+        label9.Text:='Mega'
+   end
+   else if label9.Text='00000000' then
+      begin
+        label9.Text:='Mega';
+   end;    }
+//TEXTO4:=EDIT4.TEXT;
+{if (texto4 <> 'ouro') or (texto4 <> 'prata') or  (texto4 <>'marrom') or  (texto4 <>'vermelho') or  (texto4 <>'cinza') or  (texto4 <>'preto')or (TEXTO4 <> 'OURO') OR (TEXTO4 <> 'PRATA') OR  (TEXTO4 <>'MARROM') OR  (TEXTO4 <>'VERMELHO') OR  (TEXTO4 <>'CINZA') OR  (TEXTO4 <>'PRETO') then
+ begin
+   Edit4.Text:='Cor n„o disponÌvel no resistor'
+    //texto4:=Edit4.Text;
+    end
+ else  if  (texto4 = 'ouro') or (texto4 = 'prata') or  (texto4 ='marrom') or  (texto4 ='vermelho') or  (texto4 ='cinza') or  (texto4 ='preto')or (TEXTO4 = 'OURO') OR (TEXTO4 = 'PRATA') OR  (TEXTO4 ='MARROM') OR  (TEXTO4 ='VERMELHO') OR  (TEXTO4 ='CINZA') OR  (TEXTO4 ='PRETO') then
+ }
+    //primeiraParte0:= label9.text;
+    if (ComboBox2.ItemIndex=6)then
+       begin
+          if ((length(label9.text))=0) then
+            begin
+              primeiraParte0:='';
+        //timer1.Enabled:=false;
+            end;
+          if ((length(label9.text))=1) then
+          begin
+              primeiraParte0:='0';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label9.text))=2) then
+          begin
+              primeiraParte0:='00';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label9.text))=3) then
+          begin
+              primeiraParte0:='Kilo';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label9.text))=4) then
+          begin
+              primeiraParte0:='0Kilo';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label9.text))=5) then
+          begin
+              primeiraParte0:='00Kilo';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label9.text))=6) then
+          begin
+              primeiraParte0:='Mega';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label9.text))=7) then
+          begin
+              primeiraParte0:='0Mega';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label9.text))=8) then
+          begin
+              primeiraParte0:='00Mega';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label9.text))=9) then
+          begin
+              primeiraParte0:='000Mega';
+              //timer1.Enabled:=false;
+          end;
+        end
+      else
+        begin
+          if ((length(label9.text))=0) then
+            begin
+              primeiraParte0:=label8.text+'';
+        //timer1.Enabled:=false;
+            end;
+          if ((length(label9.text))=1) then
+          begin
+              primeiraParte0:=label8.text+'0';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label9.text))=2) then
+          begin
+              primeiraParte0:=label8.text+'00';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label9.text))=3) then
+          begin
+              primeiraParte0:=label8.text+'Kilo';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label9.text))=4) then
+          begin
+              primeiraParte0:=label8.text+'0Kilo';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label9.text))=5) then
+          begin
+              primeiraParte0:=','+label8.text+'Mega';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label9.text))=6) then
+          begin
+              primeiraParte0:=label8.text+'Mega';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label9.text))=7) then
+          begin
+              primeiraParte0:=label8.text+'0Mega';
+              //timer1.Enabled:=false;
+          end;
+           if ((length(label9.text))=8) then
+          begin
+              primeiraParte0:=','+label8.text+'00Mega';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label9.text))=9) then
+          begin
+              primeiraParte0:=label8.text+'Giga';
+              //timer1.Enabled:=false;
+          end;
+          {if ((length(label9.text))=8) then
+          begin
+              primeiraParte0:='00Mega';
+              //timer1.Enabled:=false;
+          end;
+          if ((length(label9.text))=9) then
+          begin
+              primeiraParte0:='000Mega';
+              //timer1.Enabled:=false;
+          end; }
+       end;
+
+    edit5.text:=label7.text+primeiraParte0+'Ohms'+'    '+label10.text+'tol';
+
+    //primeiraParte.free();
+
+    timer4.Enabled:=false;
+
+end;
+
+
+end.

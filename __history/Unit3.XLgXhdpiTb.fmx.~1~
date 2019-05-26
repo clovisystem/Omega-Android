@@ -1,0 +1,122 @@
+inherited Form3_XLgXhdpiTb: TForm3_XLgXhdpiTb
+  ClientHeight = 1255
+  ClientWidth = 800
+  DesignerMasterStyle = 3
+  inherited Label1: TLabel
+    Size.Width = 800.000000000000000000
+  end
+  inherited HeaderLabel: TLabel
+    Size.Width = 800.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+  end
+  inherited Label2: TLabel
+    Position.X = 148.387100219726600000
+    Position.Y = 303.701080322265600000
+    Size.Width = 77.419357299804680000
+    Size.Height = 73.692169189453120000
+  end
+  inherited Label3: TLabel
+    Position.X = 148.387100219726600000
+    Position.Y = 410.889678955078100000
+    Size.Width = 94.623657226562500000
+    Size.Height = 73.692169189453120000
+  end
+  inherited Label4: TLabel
+    Position.X = 148.387100219726600000
+    Position.Y = 518.078308105468700000
+    Size.Width = 94.623657226562500000
+    Size.Height = 73.692199707031240000
+  end
+  inherited Label5: TLabel
+    Position.X = 148.387100219726600000
+    Position.Y = 625.266906738281200000
+    Size.Width = 94.623657226562500000
+    Size.Height = 73.692199707031240000
+  end
+  inherited Label7: TLabel
+    Position.Y = 803.914611816406300000
+    Size.Width = 800.000061035156200000
+    Size.Height = 127.286499023437500000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+  end
+  inherited Button1: TButton
+    Position.X = 172.741943359375000000
+    Position.Y = 1047.855834960937000000
+  end
+  inherited Edit6: TEdit
+    Position.X = 120.430114746093700000
+    Position.Y = 946.832763671874900000
+    Size.Width = 552.688171386718700000
+  end
+  inherited Label6: TLabel
+    Position.X = 148.387100219726600000
+    Position.Y = 732.455505371093800000
+    Size.Width = 94.623657226562500000
+    Size.Height = 73.692199707031240000
+  end
+  inherited Button2: TButton
+    Position.X = 430.107543945312500000
+    Position.Y = 1054.021362304688000000
+    Size.Width = 243.010742187500000000
+    Size.Height = 98.256225585937500000
+  end
+  inherited Label8: TLabel
+    Position.X = 550.537658691406300000
+    Position.Y = 303.701080322265600000
+    Size.Width = 139.784973144531200000
+    Size.Height = 69.225982666015630000
+  end
+  inherited Label9: TLabel
+    Position.X = 550.537658691406300000
+    Position.Y = 410.889678955078100000
+    Size.Width = 139.784973144531200000
+    Size.Height = 69.225982666015630000
+  end
+  inherited Label10: TLabel
+    Position.X = 550.537658691406300000
+    Position.Y = 518.078308105468700000
+    Size.Width = 139.784973144531200000
+    Size.Height = 69.226013183593750000
+  end
+  inherited Label11: TLabel
+    Position.X = 550.537658691406300000
+    Position.Y = 607.402160644531200000
+    Size.Width = 156.989257812500000000
+    Size.Height = 109.421691894531200000
+  end
+  inherited Label12: TLabel
+    Position.X = 550.537658691406300000
+    Position.Y = 732.455505371093800000
+    Size.Width = 139.784973144531200000
+    Size.Height = 69.226013183593750000
+  end
+  inherited Button3: TButton
+    Position.X = 48.000000000000000000
+    Position.Y = 496.000000000000000000
+  end
+  inherited ComboBox1: TComboBox
+    Position.X = 258.000000000000000000
+    Position.Y = 318.000000000000000000
+    Size.Width = 277.000000000000000000
+  end
+  inherited ComboBox2: TComboBox
+    Position.X = 258.000000000000000000
+    Position.Y = 425.000000000000000000
+    Size.Width = 277.000000000000000000
+  end
+  inherited ComboBox3: TComboBox
+    Position.X = 258.000000000000000000
+    Position.Y = 532.000000000000000000
+    Size.Width = 277.000000000000000000
+  end
+  inherited ComboBox4: TComboBox
+    Position.X = 258.000000000000000000
+    Position.Y = 639.000000000000000000
+    Size.Width = 277.000000000000000000
+  end
+  inherited ComboBox5: TComboBox
+    Position.X = 258.000000000000000000
+    Position.Y = 747.000000000000000000
+    Size.Width = 277.000000000000000000
+  end
+end
