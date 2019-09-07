@@ -205,7 +205,11 @@ procedure TForm2.ComboBox3Change(Sender: TObject);
           label9.Text:='00000'
 
       else if ComboBox3.ItemIndex = 9 then
-          label9.Text:='00';
+          label9.Text:='0,10'
+      else if ComboBox3.ItemIndex = 10 then
+          label9.Text:='00'
+      else if ComboBox3.ItemIndex = 11 then
+          label9.Text:='0,05';
 
 
 
@@ -390,24 +394,24 @@ end
 Else If (ComboBox1.ItemIndex=7)then
 begin
 label7.Visible:=true;
-label7.text:='7';
-label7.fontcolor:=talphacolorrec.Purple;
+label7.text:='5';
+label7.fontcolor:=talphacolorrec.green;
 end
 
 
 Else If (ComboBox1.ItemIndex=8)then
 begin
 label7.Visible:=true;
-label7.text:='5';
-label7.fontcolor:=talphacolorrec.Green;
+label7.text:='2';
+label7.fontcolor:=talphacolorrec.red;
 end
 
 
 Else If (ComboBox1.ItemIndex=9)then
 begin
 label7.Visible:=true;
-label7.text:='2';
-label7.fontcolor:=talphacolorrec.red;
+label7.text:='7';
+label7.fontcolor:=talphacolorrec.purple;
 
 timer1.Enabled:=false;
 end;
@@ -480,24 +484,24 @@ end
 Else If(ComboBox2.ItemIndex=7)then
 begin
 Label8.Visible:=true;
-Label8.text:='7';
-Label8.fontcolor:=talphacolorrec.Purple;
+Label8.text:='5';
+Label8.fontcolor:=talphacolorrec.green;
 end
 
 
 Else If(ComboBox2.ItemIndex=8)then
 begin
 Label8.Visible:=true;
-Label8.text:='5';
-Label8.fontcolor:=talphacolorrec.Green;
+Label8.text:='2';
+Label8.fontcolor:=talphacolorrec.red;
 end
 
 
 Else If(ComboBox2.ItemIndex=9)then
 begin
 Label8.Visible:=true;
-Label8.text:='2';
-Label8.fontcolor:=talphacolorrec.red;
+Label8.text:='7';
+Label8.fontcolor:=talphacolorrec.purple;
 end;
 
 
@@ -569,25 +573,41 @@ end
 Else If(ComboBox3.ItemIndex=7)then
 begin
 Label9.Visible:=true;
-Label9.text:='0000000';
-Label9.fontcolor:=talphacolorrec.Purple;
+Label9.text:='00000';
+Label9.fontcolor:=talphacolorrec.green;
 end
 
 
 Else If(ComboBox3.ItemIndex=8)then
 begin
 Label9.Visible:=true;
-Label9.text:='00000';
-Label9.fontcolor:=talphacolorrec.Green;
+Label9.text:='00';
+Label9.fontcolor:=talphacolorrec.red;
 end
 
 
 Else If(ComboBox3.ItemIndex=9)then
 begin
 Label9.Visible:=true;
-Label9.text:='00';
-Label9.fontcolor:=talphacolorrec.red;
+Label9.text:='0000000';
+Label9.fontcolor:=talphacolorrec.purple;
+end
+
+Else If (ComboBox3.ItemIndex=10)then
+begin
+label9.Visible:=true;
+label9.text:='0,10';
+label9.fontcolor:=talphacolorrec.Silver;
+end
+
+Else If(ComboBox3.ItemIndex=11)then
+begin
+label9.Visible:=true;
+label9.text:='0,05';
+label9.fontcolor:=talphacolorrec.Yellow;
 end;
+
+
 
 
 
@@ -647,6 +667,10 @@ end;
 procedure TForm2.Timer4Timer(Sender: TObject);
 var
   primeiraParte0:string;
+  separador:string;
+  calculoString:string;
+  calculo1:real;
+  calculo2:real;
 {var
 texto4:string; }
 begin
@@ -803,6 +827,23 @@ begin
 
     edit5.text:=label7.text+primeiraParte0+'Ohms'+'    '+label10.text+'tol';
 
+    if(combobox3.Itemindex = 10)then
+      begin
+      separador:=copy(edit5.text,1,2);
+      calculo1:=StrToFloat(separador);
+      calculo2:= calculo1/10;
+      calculoString:=FloatToStr(calculo2);
+      edit5.text:=calculoString + 'Ohms'+'    '+label10.text+'tol';
+      end;
+
+    if(combobox3.Itemindex = 11)then
+      begin
+      separador:=copy(edit5.text,1,2);
+      calculo1:=StrToFloat(separador);
+      calculo2:= calculo1/100;
+      calculoString:=FloatToStr(calculo2);
+      edit5.text:=calculoString + 'Ohms'+'    '+label10.text+'tol';
+      end;
     //primeiraParte.free();
 
     timer4.Enabled:=false;

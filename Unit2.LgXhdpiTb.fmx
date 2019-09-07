@@ -7,18 +7,18 @@ inherited Form2_LgXhdpiTb: TForm2_LgXhdpiTb
   end
   inherited Label7: TLabel
     Position.X = 361.290313720703100000
-    Position.Y = 221.066665649414000000
+    Position.Y = 221.066665649414100000
     Size.Width = 73.548370361328130000
     Size.Height = 45.085952758789060000
   end
   inherited Label2: TLabel
-    Position.X = 82.580642700195320000
-    Position.Y = 221.066665649414000000
+    Position.X = 82.580642700195310000
+    Position.Y = 221.066665649414100000
     Size.Width = 63.225799560546880000
     Size.Height = 47.994735717773440000
   end
   inherited Label3: TLabel
-    Position.X = 82.580642700195320000
+    Position.X = 82.580642700195310000
     Position.Y = 290.877197265625000000
     Size.Width = 63.225799560546880000
     Size.Height = 47.994750976562500000
@@ -27,48 +27,48 @@ inherited Form2_LgXhdpiTb: TForm2_LgXhdpiTb
     Position.X = 361.290313720703100000
     Position.Y = 290.877197265625000000
     Size.Width = 73.548370361328130000
-    Size.Height = 45.085968017578120000
+    Size.Height = 45.085968017578130000
   end
   inherited Label9: TLabel
     Position.X = 361.290313720703100000
     Position.Y = 349.052642822265600000
-    Size.Width = 105.806457519531200000
+    Size.Width = 105.806457519531300000
     Size.Height = 71.264923095703130000
   end
   inherited Label4: TLabel
-    Position.X = 82.580642700195320000
-    Position.Y = 360.687713623046800000
+    Position.X = 82.580642700195310000
+    Position.Y = 360.687713623046900000
     Size.Width = 63.225799560546880000
     Size.Height = 47.994750976562500000
   end
   inherited Label5: TLabel
-    Position.X = 82.580642700195320000
-    Position.Y = 430.498260498046800000
+    Position.X = 82.580642700195310000
+    Position.Y = 430.498260498046900000
     Size.Width = 63.225799560546880000
     Size.Height = 47.994750976562500000
   end
   inherited Label10: TLabel
     Position.X = 361.290313720703100000
-    Position.Y = 430.498260498046800000
+    Position.Y = 430.498260498046900000
     Size.Width = 94.193542480468750000
-    Size.Height = 45.085968017578120000
+    Size.Height = 45.085968017578130000
   end
   inherited Label6: TLabel
-    Position.Y = 500.308776855468700000
+    Position.Y = 500.308776855468800000
     Size.Width = 480.000000000000000000
     Size.Height = 71.264892578125000000
     TextSettings.Font.StyleExt = {00070000000000000004000000}
   end
   inherited Edit5: TEdit
-    Position.X = 82.580642700195320000
+    Position.X = 82.580642700195310000
     Position.Y = 605.024597167968800000
     Size.Width = 310.967773437500000000
   end
   inherited Button2: TButton
-    Position.X = 247.741928100586000000
+    Position.X = 247.741928100585900000
     Position.Y = 686.470214843750000000
     Size.Width = 145.806442260742200000
-    Size.Height = 63.992980957031240000
+    Size.Height = 63.992980957031250000
   end
   inherited Button1: TButton
     Position.X = 101.774192810058600000
@@ -80,12 +80,12 @@ inherited Form2_LgXhdpiTb: TForm2_LgXhdpiTb
   end
   inherited ComboBox1: TComboBox
     Position.X = 154.838699340820300000
-    Position.Y = 209.431579589843700000
+    Position.Y = 209.431579589843800000
     Size.Width = 176.774185180664100000
   end
   inherited ComboBox2: TComboBox
     Position.X = 154.838699340820300000
-    Position.Y = 279.242126464843700000
+    Position.Y = 279.242126464843800000
     Size.Width = 176.774185180664100000
   end
   inherited ComboBox3: TComboBox

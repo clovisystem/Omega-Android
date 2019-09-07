@@ -512,7 +512,7 @@ end
 Else If (ComboBox3.ItemIndex=6)then
 begin
 Label10.Visible:=true;
-Label10.text:=' ';
+Label10.text:='';
 Label10.fontcolor:=talphacolorrec.Black;
 end
 
@@ -633,6 +633,20 @@ begin
 Label11.Visible:=true;
 Label11.text:='00';
 Label11.fontcolor:=talphacolorrec.red;
+end
+
+Else If (ComboBox4.ItemIndex=10)then
+begin
+label11.Visible:=true;
+label11.text:='0,10';
+label11.fontcolor:=talphacolorrec.Silver;
+end
+
+Else If(ComboBox4.ItemIndex=11)then
+begin
+label11.Visible:=true;
+label11.text:='0,05';
+label11.fontcolor:=talphacolorrec.Yellow;
 
 timer1.Enabled:=false;
 
@@ -704,6 +718,10 @@ end;      }
 
 var
   primeiraParte1:string;
+  separador:string;
+  calculoString:string;
+  calculo1:real;
+  calculo2:real;
 begin
   {if label11.Text='000' then
       begin
@@ -843,6 +861,55 @@ begin
 
 
      edit6.text:=primeiraParte1+'Ohms'+'    '+label12.text+'tol';
+
+     if(combobox4.Itemindex = 10)then
+     try
+      begin
+      separador:=copy(edit6.text,1,3);
+      separador:=stringReplace(separador,'G','',[]);
+      separador:=stringReplace(separador,'M','',[]);
+      separador:=stringReplace(separador,'K','',[]);
+      separador:=stringReplace(separador,'Gi','',[]);
+      separador:=stringReplace(separador,'Me','',[]);
+      separador:=stringReplace(separador,'Ki','',[]);
+      separador:=stringReplace(separador,'Giga','',[]);
+      separador:=stringReplace(separador,'Mega','',[]);
+      separador:=stringReplace(separador,'Kilo','',[]);
+      separador:=stringReplace(separador,',','',[]);
+      calculo1:=StrToFloat(separador);
+      calculo2:= calculo1/10;
+      calculoString:=FloatToStr(calculo2);
+      edit6.text:=calculoString + 'Ohms'+'    '+label12.text+'tol';
+      end;
+     except
+      messageDlg('Voltar ao App',TMsgDlgType.mtWarning,[TMsgDlgBtn.mbOK],0);
+     end;
+
+    if(combobox4.Itemindex = 11)then
+    try
+      begin
+      separador:=copy(edit6.text,1,3);
+      separador:=stringReplace(separador,'G','',[]);
+      separador:=stringReplace(separador,'M','',[]);
+      separador:=stringReplace(separador,'K','',[]);
+      separador:=stringReplace(separador,'Gi','',[]);
+      separador:=stringReplace(separador,'Me','',[]);
+      separador:=stringReplace(separador,'Ki','',[]);
+      separador:=stringReplace(separador,'Gig','',[]);
+      separador:=stringReplace(separador,'Meg','',[]);
+      separador:=stringReplace(separador,'Kil','',[]);
+      separador:=stringReplace(separador,'Giga','',[]);
+      separador:=stringReplace(separador,'Mega','',[]);
+      separador:=stringReplace(separador,'Kilo','',[]);
+      separador:=stringReplace(separador,',','',[]);
+      calculo1:=StrToFloat(separador);
+      calculo2:= calculo1/100;
+      calculoString:=FloatToStr(calculo2);
+      edit6.text:=calculoString + 'Ohms'+'    '+label12.text+'tol';
+      end;
+    except
+      messageDlg('Voltar ao App',TMsgDlgType.mtWarning,[TMsgDlgBtn.mbOK],0);
+    end;
    {if ((length(label11.text))=0) then
     begin
         primeiraParte1:='';

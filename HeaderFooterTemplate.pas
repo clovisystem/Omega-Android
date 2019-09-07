@@ -20,7 +20,6 @@ type
     Button1: TButton;
     Button2: TButton;
     ImageViewer1: TImageViewer;
-    ImageViewer2: TImageViewer;
     Label2: TLabel;
     Edit1: TEdit;
     ComboBox1: TComboBox;
@@ -31,6 +30,9 @@ type
     Brush1: TBrushObject;
     Label3: TLabel;
     VertScrollBox1: TVertScrollBox;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
 
 
     {procedure RadioButton1Change(Sender: TObject);
@@ -100,7 +102,7 @@ begin
     FocoButton2:=TControl(Button2);
     FocoCircle:=TControl(Circle1);
     //VertScrollBox1.ViewportPosition:=PointF(VertScrollBox1.ViewPortPosition.X, TControl(FocoCircle).Position.Y + 180);
-    FocoImageViewer:=TControl(ImageViewer2);
+    FocoImageViewer:=TControl(Image2);
     //VertScrollBox1.ViewportPosition:=PointF(VertScrollBox1.ViewPortPosition.X, TControl(FocoImageViewer).Position.Y - 260);
     AjustarScroll();
 end;
@@ -182,6 +184,9 @@ var
     valor:string;
     faixas, faixas1, faixas2:string;
 begin
+    VertScrollBox1.Margins.Top:=-250;
+    //FocoCircle:=TControl(Circle1);
+    //FocoCircle.Margins.top:=-800;
     valor := edit1.Text;
     tamanho := length(edit1.Text);
     //if combobox1.ItemIndex = 0  then
@@ -331,12 +336,31 @@ begin
           faixas1 := valor.Substring(1,1);
           faixas2 := valor.Substring(2,1);
           //label3.Text:=faixas2;
-          if faixas2 = '0' then
+
+
+          if faixas1 = '0' then
           begin
-              circle3.visible:=true;
-              circle3.fill.Color:=TAlphaColorRec.black;
-              //circle3.enabled:=false;
+              circle2.visible:=true;
+              circle2.fill.Color:=TAlphaColorRec.black;
+              //circle2.enabled:=false;
           end;
+
+
+
+          if faixas2 = '0' then
+              begin
+                  circle3.visible:=true;
+                  circle3.fill.Color:=TAlphaColorRec.black;
+                  //circle3.enabled:=false;
+                  if (faixas = '1') and (faixas1 = '0') and (faixas2 = '0')then
+                    begin
+
+                        circle3.visible:=true;
+                        circle3.fill.Color:=TAlphaColorRec.red;
+                  //circle3.enabled:=false;
+
+                    end;
+              end;
 
           if faixas = '1' then
           begin
@@ -1162,7 +1186,7 @@ begin
     circle2.Visible:=false;
     circle3.Visible:=false;
     circle4.Visible:=false;
-    ComboBox1.ListBox.ListItems[0].TextSettings.FontColor := TAlphaColorRec.paleturquoise;
+    comboBox1.ListBox.ListItems[0].TextSettings.FontColor := TAlphaColorRec.paleturquoise;
 
   //ImageViewer1.BackgroundFill:=talpharec.blue;
 end;
@@ -1212,6 +1236,7 @@ end; }
 procedure TForm1.Timer1Timer(Sender: TObject);
 begin
     ImageViewer1.visible:=false;
+
 end;
 
 end.
