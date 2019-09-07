@@ -33,6 +33,7 @@ type
     Image1: TImage;
     Image2: TImage;
     Image3: TImage;
+    SpdBtnVoltar: TSpeedButton;
 
 
     {procedure RadioButton1Change(Sender: TObject);
@@ -50,6 +51,7 @@ type
     procedure Edit1Enter(Sender: TObject);
     procedure FormHide(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure SpdBtnVoltarClick(Sender: TObject);
 
 
 
@@ -105,7 +107,12 @@ begin
     FocoImageViewer:=TControl(Image2);
     //VertScrollBox1.ViewportPosition:=PointF(VertScrollBox1.ViewPortPosition.X, TControl(FocoImageViewer).Position.Y - 260);
     AjustarScroll();
+
+
+
 end;
+
+
 
 
 procedure TForm1.FormVirtualKeyboardHidden(Sender: TObject;
@@ -117,6 +124,17 @@ begin
         AnimateFloat('Padding.Top', 0, 0.1); }
 
      VertScrollBox1.Margins.Bottom:=0;
+end;
+
+procedure TForm1.SpdBtnVoltarClick(Sender: TObject);
+begin
+     VertScrollBox1.Margins.Bottom:=0;
+     VertScrollBox1.Margins.Top:=0;
+     SpdBtnVoltar.Visible := false;
+     Label1.visible := true;
+     Label2.Visible  := true;
+
+
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
@@ -178,12 +196,17 @@ end;
 
 
 
+
+
 procedure TForm1.Edit1Typing(Sender: TObject);
 var
     tamanho:integer;
     valor:string;
     faixas, faixas1, faixas2:string;
 begin
+    Label1.visible := false;
+    Label2.Visible  := false;
+    SpdBtnVoltar.Visible := true;
     VertScrollBox1.Margins.Top:=-250;
     //FocoCircle:=TControl(Circle1);
     //FocoCircle.Margins.top:=-800;
@@ -1181,7 +1204,7 @@ end;
 procedure TForm1.FormShow(Sender: TObject);
 begin
     circle1.Visible:=false;
-
+    SpdBtnVoltar.Visible := false;
 
     circle2.Visible:=false;
     circle3.Visible:=false;

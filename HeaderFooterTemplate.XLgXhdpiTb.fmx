@@ -835,6 +835,10 @@ inherited Form1_XLgXhdpiTb: TForm1_XLgXhdpiTb
       Position.Y = 440.000000000000000000
       Size.Width = 800.000000000000000000
     end
+    inherited SpdBtnVoltar: TSpeedButton
+      Position.Y = 1159.000000000000000000
+      Size.Width = 800.000000000000000000
+    end
   end
   inherited Footer: TToolBar
     Position.Y = 1207.000000000000000000

@@ -825,7 +825,11 @@ inherited Form1_LgXhdpiPh: TForm1_LgXhdpiPh
     end
     inherited Label2: TLabel
       Size.Width = 450.000000000000000000
-      Size.Height = 57.000000000000000000
+      Size.Height = 22.000000000000000000
+    end
+    inherited SpdBtnVoltar: TSpeedButton
+      Position.Y = 599.000000000000000000
+      Size.Width = 450.000000000000000000
     end
   end
   inherited Footer: TToolBar
